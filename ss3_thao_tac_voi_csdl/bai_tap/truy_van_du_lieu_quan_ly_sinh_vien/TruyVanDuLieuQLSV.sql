@@ -25,3 +25,9 @@ ORDER BY m.mark DESC,
          s.student_name;
 
 
+SELECT s.student_name, c.class_name, m.mark
+FROM student s
+         LEFT JOIN class c ON s.class_id = c.class_id
+         JOIN mark m ON m.student_id = s.student_id;
+
+
