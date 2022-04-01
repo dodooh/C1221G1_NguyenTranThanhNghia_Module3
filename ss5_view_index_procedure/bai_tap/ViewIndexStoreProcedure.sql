@@ -109,4 +109,38 @@ CALL create_new_product('APPLE18S', 'Iphone 18', 2100, 190, 'An apple product to
 
 -- Tạo store procedure sửa thông tin sản phẩm theo id
 
+DELIMITER //
+CREATE PROCEDURE edit_product_by_id(
+    p_id int,
+    p_code varchar(45),
+    p_name varchar(45),
+    p_price double,
+    p_amount int,
+    p_description varchar(300),
+    p_status varchar(45)
+)
+BEGIN
+    UPDATE products
+    SET product_code        = p_code,
+        product_name        = p_name,
+        product_price       = p_price,
+        product_amount      = p_amount,
+        product_description = p_description,
+        product_status      = p_status
+    WHERE id = p_id;
+END//
+DELIMITER ;
+CALL edit_product_by_id(8, 'APPLE18S', 'EDITED iphone18', 2300, 120, 'An apple product today', 'new');
 
+-- Tạo store procedure xoá sản phẩm theo id
+DELIMITER //
+CREATE PROCEDURE delete_product_by_id(
+    p_id int
+)
+BEGIN
+    DELETE
+    FROM products
+    WHERE id = p_id;
+END//
+DELIMITER ;
+CALL delete_product_by_id(8);
