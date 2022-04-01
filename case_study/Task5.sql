@@ -7,7 +7,7 @@ SELECT c2.customer_id                                       AS cid,
        s.service_name,
        c.created_date,
        c.end_date,
-       SUM(COALESCE(`as`.price * cd.quantity, 0) + s.price) AS 'total'
+       SUM(COALESCE(`as`.price * cd.quantity, 0) + COALESCE(s.price, 0)) AS 'total'
 
 FROM contract c
          RIGHT JOIN customer c2 ON c.customer_id = c2.customer_id
