@@ -1,8 +1,8 @@
 USE furama_resort;
 
-SELECT c2.customer_id                                       AS cid,
+SELECT c2.customer_id                                                    AS cid,
        c2.customer_name,
-       ct.customer_type_name                                AS 'type',
+       ct.customer_type_name                                             AS 'type',
        c.contract_id,
        s.service_name,
        c.created_date,
