@@ -13,4 +13,4 @@ BEGIN
 END >>
 DELIMITER ;
 
-UPDATE contract set created_date = '2021-05-05', end_date = '2021-05-08' WHERE contract_id = 6;
+UPDATE contract set created_date = '2021-05-05', end_date = '2021-05-06' WHERE contract_id = 6;
