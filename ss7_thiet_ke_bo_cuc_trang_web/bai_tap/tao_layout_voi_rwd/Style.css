@@ -117,7 +117,7 @@ nav ul li a {
 }
 /*Ipad ngang(1024 x 768)*/
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 991px){
     .toggle-btn {
         display: block;
     }
@@ -147,7 +147,7 @@ nav ul li a {
 }
 @media screen and (max-width: 480px){
     #body .main-content {
-        display: none;
+        display: block;
         width: 100%;
     }
     #body .right-side-panel {
