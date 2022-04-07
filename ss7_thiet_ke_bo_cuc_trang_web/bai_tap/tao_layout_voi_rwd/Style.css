@@ -13,47 +13,36 @@ h1 {
 hr {
     margin: 20px 0;
 }
-#header {
+header {
+    display: inline-block;
+    width: 100%;
+    padding: 15px 80px;
     background-color: #222222;
-    height: 60px;
-    display: flex;
-    padding: 0;
-    margin: 0;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff;
+    position: relative;
 }
-#header #nav {
-    padding: 0;
-    margin: 0;
-}
-#header #nav .navigator {
+.logo {
+    color: white;
     float: left;
-    padding: 0;
-    margin: 0;
-    width: 120px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
 }
-#header #nav .navigator:hover {
-    background-color: #9c9c9c;
+nav {
+    float: right;
 }
-#header #btn-login {
-    padding: 0;
-    margin: 0;
-    width: 120px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
+nav ul li {
+    display: inline-block;
+    padding: 15px 25px;
+}
+nav ul li:hover {
+    background-color: rgba(255, 255, 255, .1);
+}
+nav ul li a {
+    text-decoration: none;
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 600;
 }
 #body {
     width: 100%;
-
 }
-
 #body .left-side-panel {
     float: left;
     width: 15%;
@@ -64,19 +53,31 @@ hr {
     background-color: #F1F1F1;
 }
 #body .left-side-panel ul li {
-    list-style:  none;
+    list-style: none;
     margin-bottom: 20px;
-
-}#body .left-side-panel ul li a{
-     display: block;
-     text-decoration: none;
-     text-align: center;
-     line-height: 30px;
-     color: blue;
-
 }
-
-
+#body .left-side-panel ul li a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
+    color: blue;
+}
+.toggle-btn {
+    width: 35px;
+    position: absolute;
+    right: 80px;
+    top: 40px;
+    display: none;
+}
+.toggle-btn span {
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    float: left;
+    margin-bottom: 8px;
+}
 #body .main-content {
     float: left;
     width: 70%;
@@ -96,7 +97,6 @@ hr {
     text-align: center;
     background-color: #F1F1F1;
 }
-
 #body .right-side-panel .ads-banner {
     width: 100%;
     height: 60px;
@@ -111,4 +111,47 @@ hr {
     height: 50px;
     line-height: 50px;
     clear: both;
+}
+.icon {
+    display: none;
+}
+/*Ipad ngang(1024 x 768)*/
+
+@media screen and (max-width: 991px) {
+    .toggle-btn {
+        display: block;
+    }
+    nav {
+        display: none;
+        width: 100%;
+        border-top: 1px solid #f2f2f2;
+        padding-top: 20px;
+        margin-top: 30px;
+    }
+    nav ul li {
+        padding: 15px 15px;
+        width: 100%;
+    }
+    nav.show {
+        display: block;
+    }
+    #body .left-side-panel {
+        display: none;
+    }
+    #body .main-content {
+        width: 85%;
+    }
+    #body .right-side-panel {
+        width: 15%;
+    }
+}
+@media screen and (max-width: 480px){
+    #body .main-content {
+        display: none;
+        width: 100%;
+    }
+    #body .right-side-panel {
+        width: 100%;
+        height: auto;
+    }
 }
