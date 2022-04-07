@@ -3,6 +3,15 @@
     margin: 0;
     padding: 0;
 }
+body {
+    font-family: "Open Sans", sans-serif;
+    background: #222222;
+    color: #ffffff;
+    margin: 0;
+    min-height: 100%;
+    height: 100%;
+    position: relative;
+}
 .col-1 {
     width: 8.33%;
 }
@@ -43,8 +52,37 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    background-color: #121212;
 }
+.right-side-bar, .left-side-bar {
+    margin-top: 16px;
+}
+.suggest-video-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: self-end;
+}
+
+.thumbnail-video-frame {
+    width: 90%;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid black;
+}
+.thumbnail-video-frame img{
+    width: 100%;
+    min-height: 100%;
+}
+.suggest-video-panel .title-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: self-end;
+}
+
 .video-container {
+    text-align: center;
     position: relative;
     width: 100%;
     height: 0;
@@ -53,7 +91,78 @@
 iframe {
     position: absolute;
     top: 0;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+}
+header {
+    position: fixed;
+    top: 0;
     left: 0;
+    z-index: 1;
     width: 100%;
-    height: 100%;
+    background-color: #222222;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+nav {
+    margin-top: 80px;
+    width: 100%;
+    height: 42px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+nav ul li {
+    list-style: none;
+}
+
+nav ul li:after {
+    content: "\00a0\00a0|\00a0\00a0";
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+
+.hub {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.hub span:nth-child(2) {
+    background: #FF9900;
+    color: #000000;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+@media screen and (max-width: 768px) {
+    .row {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
 }
