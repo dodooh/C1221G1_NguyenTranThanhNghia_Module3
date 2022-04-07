@@ -9,7 +9,7 @@
 <body>
 
 
-<div id="header">
+<div id="header-id">
     <h1>Bồ Câu Không Đưa Thư</h1>
 </div>
 <hr>
@@ -247,7 +247,10 @@
 </body>
 <script>
     $('.tab-link').click(function () {
+        // Tim ten class div can show
         var contClass = $(this).data('div');
+        console.log(contClass);
+        // An tat ca cac chapter, show chapter co div la contClass vua tim
         $('.chapter').hide().filter('.' + contClass).show();
     });
     $("#muc_luc").click(function () {
