@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Microsoft</title>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        .a-color {
+            color: #0067B8;
+        }
+        .a-color:hover {
+            border-bottom: 2px solid #0067B8;
+        }
+        .bg-none {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light mx-5 mb-4">
+    <a href="" class="px-2">
+        <img height="18" alt="" itemprop="logo" class="c-image"
+             src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31"
+             role="presentation" aria-hidden="true" style="overflow-x: visible;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active" style="border-left: 3px solid black ;">
+                <a class="nav-link font-weight-bold" href="#">Surface<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-Computers" role="button"
+                   data-toggle="dropdown" aria-expanded="false">
+                    Computers
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown-Computers">
+                    <div class="dropdown-item font-weight-bold disabled mb-3">2-in-1 PCs</div>
+                    <a class="dropdown-item py-2" href="#">Surface Pro 8</a>
+                    <a class="dropdown-item py-2" href="#">New Surface Pro 7</a>
+                    <a class="dropdown-item py-2" href="#">Surface Pro X</a>
+                    <a class="dropdown-item py-2" href="#">Surface Pro Go 3</a>
+                    <a class="dropdown-item py-2" href="#">Surface Go 3</a>
+                    <a class="dropdown-item py-2" href="#">Explore All 2-in-1 PCs</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-CfB" role="button"
+                   data-toggle="dropdown" aria-expanded="false">
+                    Computers for Business
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown-CfB">
+                    <div class="dropdown-item font-weight-bold disabled mb-3">2-in-1 Tablets</div>
+                    <a class="dropdown-item py-2" href="#">Surface Pro 8 for Business</a>
+                    <a class="dropdown-item py-2" href="#">Surface Pro 3 for Business</a>
+                    <a class="dropdown-item py-2" href="#">Surface Pro 7+ for Business</a>
+                    <a class="dropdown-item py-2" href="#">Surface Pro X for Business</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-Acs" role="button"
+                   data-toggle="dropdown" aria-expanded="false">
+                    Accessories
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown-Acs">
+                    <a class="dropdown-item py-2" href="#">Surface Headphone 2</a>
+                    <a class="dropdown-item py-2" href="#">Surface Earbuds</a>
+                    <a class="dropdown-item py-2" href="#">Surface Pro X accessories</a>
+                    <a class="dropdown-item py-2" href="#">Surface Pro accessories</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-Shop" role="button"
+                   data-toggle="dropdown" aria-expanded="false">
+                    Shop Now
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown-Shop">
+                    <a class="dropdown-item py-2" href="#">Where to buy</a>
+                    <a class="dropdown-item py-2" href="#">Surface Deals</a>
+                    <a class="dropdown-item py-2" href="#">Surface Bundles</a>
+                    <a class="dropdown-item py-2" href="#">Personal Shopping Appointments</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Support</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav my-2 my-lg-0">
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-All" role="button"
+                   data-toggle="dropdown" aria-expanded="false">
+                    All Microsoft
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown-All">
+                    <a class="dropdown-item py-2" href="#">Microsoft 365</a>
+                    <a class="dropdown-item py-2" href="#">Office</a>
+                    <a class="dropdown-item py-2" href="#">Windows</a>
+                </div>
+            </li>
+            <li class="nav-item px-1">
+                <a class="nav-link" href="#">
+                    Search
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                         class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </a>
+            </li>
+            <li class="nav-item px-1">
+                <a class="nav-link" href="#">
+                    Cart
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                         class="bi bi-cart3" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg>
+                </a>
+            </li>
+            <li class="nav-item px-1">
+                <a class="nav-link" href="#">
+                    Sign in
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                         class="bi bi-person-badge" viewBox="0 0 16 16">
+                        <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0h-7zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492V2.5z"/>
+                    </svg>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+<div class="nav justify-content-center" style="background-color:  #0067B8">
+    <a class="nav-link active text-light" href=""> Save big on Surface devices. Shop Deals ></a>
+</div>
+<div class="container-fluid p-0">
+    <div class="col-lg-8  p-0 text-center mx-auto">
+        <div class="display-4 pt-3">Microsoft Surface with Windows 11</div>
+        <div class="h3 py-2 font-weight-light">Surface laptops and 2-in-1s with Windows 11 are designed to fuel your
+            originality, ideas and passions
+        </div>
+        <div class="d-inline-flex px-2 pb-2 font-weight-bold">
+            <a class="nav-link a-color" href="#"> Explore all products ></a>
+            <a class="nav-link a-color" href="#"> Shop Surface Pro 8 ></a>
+            <a class="nav-link a-color" href="#"> Shop Surface Laptop Studio ></a>
+        </div>
+    </div>
+    <div class="col-lg-12 p-0">
+        <img alt="" width="100%"
+             src="https://c.s-microsoft.com/en-us/CMSImages/Surface_….jpg?version=71ca2fe0-7c71-6052-7082-3675441c40e9">
+    </div>
+</div>
+<div class="container-fluid my-5" style="width: 90%">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="col-12 h-100">
+                <h2 class="font-weight-light">More choices than ever</h2>
+                <p>Check out the most diverse selection of Surface devices yet, built for all the
+                    ways you create, work, play, and connect.</p>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="row h-100">
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div class="d-flex">
+                        <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_LinkNav_Icon_Business.jpg?version=ac82b7e7-c5b9-ae46-b1d6-c7791c406fe4"
+                             alt="For Business" width="" height=""> <a class="nav-link font-weight-bold a-color"
+                                                                       href="#">For Business ></a>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div class="d-flex">
+                        <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_LinkNav_Icon_Compare.jpg?version=ad714aae-35db-242b-06d2-a728cc7fc073"
+                             alt="Compare Surface devices" width="" height="">
+                        <a class="nav-link font-weight-bold a-color" href="#">Compare devices ></a>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div class="d-flex">
+                        <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_LinkNav_Icon_HelpMeChoose.jpg?version=5c6740a1-c9f8-dcda-22c2-01aab2f61c70"
+                             alt="Surface devices help me choose" width="" height="">
+                        <a class="nav-link font-weight-bold a-color" href="#">Help me choose ></a>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div class="d-flex">
+                        <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_LinkNav_Icon_Deals.jpg?version=733a8b3e-f6a9-1ca3-7d02-7ee96e817acc"
+                             alt="Find Surface deals" width="" height=""> <a class="nav-link font-weight-bold a-color"
+                                                                             href="#">Deals ></a>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div class="d-flex">
+                        <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_LinkNav_Icon_Shopping.jpg?version=fb729fa8-e34e-5a83-34b1-85b2ff27d67a"
+                             alt="PERSONAL SHOPPING APPOINTMENTS" width="" height="">
+                        <a class="nav-link font-weight-bold a-color" href="#">Surface at home ></a>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+                    <div class="d-flex">
+                        <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_LinkNav_Icon_Education.jpg?version=19484993-89b8-b402-d125-13fbdc49d187"
+                             alt="For Education" width="" height="">
+                        <a class="nav-link font-weight-bold a-color"
+                           href="#">For Education ></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mx-auto my-5" style="width: 90%">
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card border border-0" style="background-color: #f3f3f3">
+                <div class="card-header bg-white px-0 h4 font-weight-light">2-in-1 PCs</div>
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_DeviceFamily_DO2_V1.jpg?version=51b444e9-b150-fddc-e621-68cc29080173"
+                     class="mscom-image x-hidden-focus" alt="Surface Pro 8 shown in kickstand mode." width="" height=""
+                     style="top: auto;">
+                <!-- card-body -->
+                <div class="card-body px-0">
+                    <a class="nav-link font-weight-bold a-color px-2"
+                       href="#">Surface Pro 8 ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card border border-0" style="background-color: #f3f3f3">
+                <div class="card-header bg-white px-0 opacity-25 h4 font-weight-light">&nbsp;</div>
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_DeviceFamily_DO3_V1.jpg?version=14d5aca6-0d92-3e85-3bea-512a72a15c74"
+                     alt="A render of Surface Pro X with a type cover." width="" height=""
+                     style="top: auto;">
+                <!-- card-body -->
+                <div class="card-body px-0">
+                    <a class="nav-link font-weight-bold a-color px-2"
+                       href="#">Surface Pro X ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card border border-0" style="background-color: #f3f3f3">
+                <div class="card-header bg-white px-0 opacity-25 h4 font-weight-light">&nbsp;</div>
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/1920_Panel03_DeviceFamily_Pro7Plus.jpg?version=f4411094-f2e1-b89b-41d1-4517624580ae"
+                     alt="Surface Pro 7+ shown as a laptop." width="" height="" style="top: auto;">
+                <!-- card-body -->
+                <div class="card-body px-0">
+                    <a class="nav-link font-weight-bold a-color px-2"
+                       href="#">Surface Pro 7+ ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card border border-0" style="background-color: #f3f3f3">
+                <div class="card-header bg-white px-0 opacity-25 h4 font-weight-light">&nbsp;</div>
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_DeviceFamily_SLS_V1.jpg?version=0ae6bebe-72a2-17e3-6f25-1c17a7209787"
+                     alt="A render of Surface Laptop Studio." width="" height="" style="top: auto;">
+                <!-- card-body -->
+                <div class="card-body px-0">
+                    <a class="nav-link font-weight-bold a-color px-2"
+                       href="#">Surface Go 3 ></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card border border-0" style="background-color: #f3f3f3">
+                <div class="card-header bg-white px-0 opacity-25 h4 font-weight-light">Laptops</div>
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_DeviceFamily_SLS_V1.jpg?version=0ae6bebe-72a2-17e3-6f25-1c17a7209787"
+                     alt="A render of Surface Laptop Studio." width="" height=""
+                     style="top: auto;">
+                <!-- card-body -->
+                <div class="card-body px-0">
+                    <a class="nav-link font-weight-bold a-color px-2"
+                       href="#">Surface Laptop Studio ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card border border-0" style="background-color: #f3f3f3">
+                <div class="card-header bg-white px-0 opacity-25 h4 font-weight-light">&nbsp;</div>
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_DeviceFamily_Laptop4_V1_Blackfriday.jpg?version=4258b51c-655a-37d6-fbd3-b8138d84dcae"
+                     class="mscom-image" alt="A render of Surface Laptop 4." width="" height="" style="top: auto;">
+                <!-- card-body -->
+                <div class="card-body px-0">
+                    <a class="nav-link font-weight-bold a-color px-2"
+                       href="#">Surface Laptop 4 ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card border border-0" style="background-color: #f3f3f3">
+                <div class="card-header bg-white px-0 opacity-25 h4 font-weight-light">&nbsp;</div>
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_DeviceFamily_LaptopGo_V1_Blackfriday.jpg?version=d650e66f-9f5e-d36a-0459-743a6d63958a"
+                     class="mscom-image" alt="A render of Surface Laptop Go." width="" height="" style="top: auto;">
+                <!-- card-body -->
+                <div class="card-body px-0">
+                    <a class="nav-link font-weight-bold a-color px-2"
+                       href="#">Surface Laptop Go ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card border border-0" style="background-color: #f3f3f3">
+                <div class="card-header bg-white px-0 opacity-25 h4 font-weight-light">Dual Screen</div>
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_DeviceFamily_DOStore2_V1.jpg?version=84185a51-4d21-b314-7442-06ce036415d8"
+                     class="mscom-image" alt="A front view of Surface Duo 2 opened." width="" height=""
+                     style="top: auto;">
+                <!-- card-body -->
+                <div class="card-body px-0">
+                    <a class="nav-link font-weight-bold a-color px-2"
+                       href="#">Surface Duo 2 ></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-12">
+            <div class="card border border-0" style="background-color: #f3f3f3">
+                <div class="card-header bg-white px-0 opacity-25 h4 font-weight-light">All-in-One
+                </div>
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_F21_DeviceFamily_SLS_V1.jpg?version=0ae6bebe-72a2-17e3-6f25-1c17a7209787"
+                     alt="A render of Surface Laptop Studio." width="" height=""
+                     style="top: auto;">
+                <!-- card-body -->
+                <div class="card-body px-0">
+                    <a class="nav-link font-weight-bold a-color px-2"
+                       href="#">Surface Laptop Studio ></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-6 col-12" style="height: 309px;">
+            <div class="card-header bg-white px-0 opacity-25 h4 font-weight-light">&nbsp;
+            </div>
+            <div class="d-flex justify-content-around" style="background-color: #f3f3f3">
+                <img src="https://c.s-microsoft.com/en-us/CMSImages/Surface_Allinone_Homepage_FamilyDevices._V1.jpg?version=da08f3dc-bbd2-c57d-d48a-6fdca1b439f4"
+                     class="mscom-image x-hidden-focus" alt="All in one laptop image" width="" height="255" style="top: auto;">
+                <div class="info d-flex flex-column justify-content-center align-items-start">
+                    <h6>Trying to decide which Surface device to choose?</h6>
+                    <a class="nav-link font-weight-bold a-color px-2"
+                       href="#">Surface Laptop Studio ></a>
+                    <a class="nav-link font-weight-bold a-color px-2"
+                       href="#">Surface Laptop Studio ></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

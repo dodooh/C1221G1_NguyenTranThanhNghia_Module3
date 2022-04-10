@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Bootstrap CDN -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+            crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icons CDN -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <title>Grid system</title>
+</head>
+<body>
+<header>
+    <h1 class="text-center display-1">
+        <strong>Bootstrap Grid system</strong>
+    </h1>
+</header>
+<div class="container">
+    <!--todo: What is the Grid system -->
+
+    <h2 class="display-4 mt-5">
+        <small>1.</small> What is the Grid system ?
+    </h2>
+    <p>A powerful mobile-first and flexible grid to build layouts</p>
+
+    <!-- Example -->
+
+    <div class="card p-3 bg-light">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- col -->
+                <div class="col p-2 bg-danger">Column-1</div>
+                <!-- col -->
+                <div class="col p-2 bg-warning">Column-2</div>
+                <!-- col -->
+                <div class="p-2 bg-info">Column-3</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- todo: Grid options -->
+    <h2 class="display-4 mt-5"><small>2.</small> Grid options</h2>
+
+    <div class="card p-3 bg-light">
+        <h1 class="display-1 border">Extra extra large (xxl≥1400px)</h1>
+        <h1 class="display-2 border">Extra large (xl≥1200px)</h1>
+        <h1 class="display-3 border">Large (lg≥992px)</h1>
+        <h1 class="display-4 border">Medium (md≥768px)</h1>
+        <h1 class="display-5 border">Small (sm≥576px)</h1>
+        <h1 class="display-6 border">Extra small (xs<576px)</h1>
+    </div>
+
+    <!--todo: Equal-width -->
+
+    <h2 class="display-4 mt-5"><small>2.1</small> Equal-width</h2>
+
+    <div class="container bg-warning">
+        <!-- row -->
+        <div class="row">
+            <!-- col -->
+            <div class="col border p-2">1 of 2</div>
+            <!-- col -->
+            <div class="col border p-2">2 of 2</div>
+        </div>
+        <!-- row -->
+        <div class="row">
+            <!-- col -->
+            <div class="col border p-2">1 of 3</div>
+            <!-- col -->
+            <div class="col border p-2">2 of 3</div>
+            <!-- col -->
+            <div class="col border p-2">3 of 3</div>
+        </div>
+    </div>
+
+    <!-- todo: Setting one column width -->
+
+    <h2 class="display-4 mt-5">
+        <small>2.2</small> Setting one column width
+    </h2>
+
+    <div class="container bg-info">
+        <!-- row -->
+        <div class="row">
+            <div class="col border p-2">1 of 3</div>
+            <!-- col-6 -->
+            <div class="col-6 border p-2">2 of 3 (wider)</div>
+            <div class="col border p-2">3 of 3</div>
+        </div>
+        <div class="row">
+            <div class="col border p-2">1 of 3</div>
+            <!-- col-5  -->
+            <div class="col-5 border p-2">2 of 3 (wider)</div>
+            <div class="col border p-2">3 of 3</div>
+        </div>
+    </div>
+
+    <!-- todo: Variable width content -->
+
+    <h2 class="display-4 mt-5"><small>2.2</small> Variable width content</h2>
+
+    <div class="container bg-light">
+        <div class="row justify-content-md-center">
+            <!-- col-lg-2 -->
+            <div class="col col-lg-2 border p-2">1 of 3</div>
+            <!-- col-sm-auto -->
+            <div class="col-sm-auto border p-2">Variable width content</div>
+            <!-- col-lg-2 -->
+            <div class="col col-lg-2 border p-2">3 of 3</div>
+        </div>
+        <div class="row">
+            <div class="col border p-2">1 of 3</div>
+            <!-- col-md-auto -->
+            <div class="border p-2">Variable width content</div>
+            <!-- col-lg-2 -->
+            <div class="col border p-2">3 of 3</div>
+        </div>
+    </div>
+
+    <!-- todo:  Responsive classes -->
+
+    <h2 class="display-3 mt-5"><small>3.</small> Responsive classes</h2>
+
+    <h2 class="display-4 mt-5"><small>3.1</small> All breakpoints</h2>
+
+    <div class="container bg-danger text-white">
+        <div class="row">
+            <div class="col border p-2">col</div>
+            <div class="col border p-2">col</div>
+            <div class="col border p-2">col</div>
+            <div class="col border p-2">col</div>
+        </div>
+        <div class="row">
+            <!-- col-8 -->
+            <div class="col-8 border p-2">col-8</div>
+            <!-- col-4 -->
+            <div class="col-4 border p-2">col-4</div>
+        </div>
+    </div>
+
+    <!-- todo:  Stacked to horizontal -->
+
+    <h2 class="display-4 mt-5"><small>3.3</small> Stacked to horizontal</h2>
+
+    <div class="container bg-warning text-dark">
+        <div class="row">
+            <!-- col-sm-8 -->
+            <div class="col-sm-8 border p-2">col-sm-8</div>
+            <!-- col-sm-4  -->
+            <div class="col-sm-4 border p-2">col-sm-4</div>
+        </div>
+        <div class="row">
+            <!-- col-sm -->
+            <div class="col-sm border p-2">col-sm</div>
+            <!-- col-sm -->
+            <div class="col-sm border p-2">col-sm</div>
+            <!-- col-sm -->
+            <div class="col-sm border p-2">col-sm</div>
+        </div>
+    </div>
+
+    <!-- todo:  Mix and match -->
+
+    <h2 class="display-4 mt-5"><small>3.3</small> Mix and match</h2>
+
+    <div class="container bg-danger text-white">
+        <div class="row">
+            <!-- col-md-8  -->
+            <div class="col-md-8 border p-2">.col-md-8</div>
+            <!-- col-6 & col-md-4 -->
+            <div class="col-6 col-md-4 border p-2">.col-6 .col-md-4</div>
+        </div>
+
+        <div class="row">
+            <!-- col-6 col-md-4 -->
+            <div class="col-6 col-md-4 border p-2 bg-dark">.col-6 .col-md-4</div>
+            <!-- col-6 col-md-4 -->
+            <div class="col-6 col-md-4 border p-2 bg-dark">.col-6 .col-md-4</div>
+            <!-- col-6 col-md-4  -->
+            <div class="col-6 col-md-4 border p-2 bg-dark">.col-6 .col-md-4</div>
+        </div>
+
+        <div class="row">
+            <!-- col-6  -->
+            <div class="col-6 border p-2 bg-primary">.col-6</div>
+            <!-- col-6 -->
+            <div class="col-6 border p-2 bg-primary">.col-6</div>
+        </div>
+    </div>
+
+    <!-- todo:  Row columns -->
+
+    <h2 class="display-4 mt-5"><small>4.</small> Row columns</h2>
+
+    <div class="container bg-warning text-dark">
+        <!-- Examples: -->
+        <!-- row-cols-auto -->
+        <div class="row row-cols-auto bg-info">
+            <div class="col border p-2">Column</div>
+            <div class="col border p-2">Column</div>
+            <div class="col border p-2">Column</div>
+            <div class="col border p-2">Column</div>
+        </div>
+        <!-- row-cols-4 -->
+        <div class="row row-cols-4 bg-success text-light">
+            <div class="col border p-2">row-cols-4</div>
+            <div class="col border p-2">row-cols-4</div>
+            <div class="col border p-2">row-cols-4</div>
+            <div class="col border p-2">row-cols-4</div>
+        </div>
+        <!-- row-cols-4 + col-6 -->
+        <div class="row row-cols-4 col-6 bg-danger text-light">
+            <div class="col border p-2">row-cols-4</div>
+            <div class="col border p-2">row-cols-4</div>
+            <!-- col-6 -->
+            <div class="border col-6 p-2 bg-info text-dark">col-6</div>
+            <div class="col border p-2">row-cols-4</div>
+        </div>
+        <!-- Screen adaptive: row-cols-1 row-cols-sm-2 row-cols-md-4-->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <div class="col border p-2">Screen adaptive</div>
+            <div class="col border p-2 bg-success">Screen adaptive</div>
+            <div class="col border p-2 bg-info text-dark">Screen adaptive</div>
+            <div class="col border p-2 bg-danger">Screen adaptive</div>
+        </div>
+    </div>
+
+    <!-- End -->
+</div>
+
+<footer class="mt-5 p-4 bg-dark text-center fs-1">
+    <h6 class="text-white">Copyright &copy; 2021 Menyhart Media</h6>
+</footer>
+</body>
+</html>
