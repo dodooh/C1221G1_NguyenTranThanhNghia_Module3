@@ -16,21 +16,23 @@ public class TranslationServlet extends HttpServlet {
         dictionary.put("how", "Thế nào");
         dictionary.put("book", "Quyển vở");
         dictionary.put("computer", "Máy tính");
-
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         String search = request.getParameter("txtSearch");
 
         PrintWriter writer = response.getWriter();
-        writer.println("<html>");
-        writer.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>");
+//        writer.println("<%@page contentType=\"text/html\" pageEncoding=\"UTF-8\"%>");
+//        writer.println("<html>");
+////        writer.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>");
+//        writer.println("<meta http-equiv=\"Content-Type\" content=\"text/html\"; charset=\"utf-8\"/>");
         String result = dictionary.get(search);
-        if(result != null){
-            writer.println("Word: " + search);
-            writer.println("Result: " + result);
+        request.setAttribute("word", search);
+        if (result != null) {
+            request.setAttribute("result", result);
         } else {
-            writer.println("Not found");
+            request.setAttribute("result", "Not found");
         }
-
-        writer.println("</html>");
+        request.getRequestDispatcher("result.jsp").forward(request, response);
     }
 
     @Override
@@ -47,7 +49,7 @@ public class TranslationServlet extends HttpServlet {
         writer.println("<html>");
         writer.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>");
         String result = dictionary.get(search);
-        if(result != null){
+        if (result != null) {
             writer.println("Word: " + search);
             writer.println("Result: " + result);
         } else {
