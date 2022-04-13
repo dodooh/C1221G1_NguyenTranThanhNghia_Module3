@@ -3,6 +3,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import utils.CalculatorUtil;
 
 @WebServlet(name = "CalculatorServlet", value = "/calculate")
 public class CalculatorServlet extends HttpServlet {
@@ -23,25 +24,7 @@ public class CalculatorServlet extends HttpServlet {
             Double num1 = Double.parseDouble(request.getParameter("number1"));
             String operator = request.getParameter("operator");
             Double num2 = Double.parseDouble(request.getParameter("number2"));
-            switch (operator) {
-                case "+":
-                    result = num1 + num2;
-                    break;
-                case "-":
-                    result = num1 - num2;
-                    break;
-                case "*":
-                    result = num1 * num2;
-                    break;
-                case "/":
-                    if (num2 == 0) {
-                        throw new ArithmeticException();
-                    }
-                    result = num1 / num2;
-                    break;
-                default:
-                    throw new InvalidObjectException("");
-            }
+            result = CalculatorUtil.calculate(num1, num2, operator);
         } catch (NumberFormatException e) {
             error_message = NUMBER_FORMAT_EXP_MESSAGE;
         } catch (ArithmeticException e) {
@@ -49,10 +32,9 @@ public class CalculatorServlet extends HttpServlet {
         } catch (InvalidObjectException e) {
             error_message = INVALID_OPERATOR_EXP_MESSAGE;
         }
-
         request.setAttribute("error_msg", error_message);
-        request.setAttribute("result", result);
-        request.getRequestDispatcher("result.jsp").forward(request, response);
+        request.setAttribute("result", String.format("%,.2f", result));
+        request.getRequestDispatcher("index.jsp").forward(request, response);
 
     }
 }

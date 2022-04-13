@@ -10,11 +10,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+          crossorigin="anonymous">
     <title>Simple Calculator</title>
 </head>
 <body>
-<div class="container" style="width: 50%; margin-top: 30vh;">
+<div class="container" style="width: 50%; margin-top: 15vh;">
     <h1>Simple Calculator</h1>
     <form action="/calculate" method="post">
         <div class="form-group">
@@ -38,6 +41,19 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <c:choose>
+        <c:when test="${not empty  error_msg}">
+            <div class="alert alert-danger" role="alert">
+                <div class="display-4"><c:out value="${error_msg}"/></div>
+            </div>
+        </c:when>
+        <c:when test="${not empty  result}">
+            <div class="alert alert-success" role="alert">
+                <div class="display-4"><c:out value="${result}"/></div>
+            </div>
+        </c:when>
+    </c:choose>
+
 </div>
 </body>
 </html>
