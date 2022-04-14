@@ -16,7 +16,7 @@ public class CalculatorServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String error_message = null;
-        String NUMBER_FORMAT_EXP_MESSAGE = "Vui lòng nhập số. Xin Cảm ơn!!!";
+        String NUMBER_FORMAT_EXP_MESSAGE = "Vui lòng nhập số!!!";
         String ARITHMETIC_EXP_MESSAGE = "Phép chia cho 0!!!";
         String INVALID_OPERATOR_EXP_MESSAGE = "Phép tính không hợp lệ!!!";
         Double result = null;

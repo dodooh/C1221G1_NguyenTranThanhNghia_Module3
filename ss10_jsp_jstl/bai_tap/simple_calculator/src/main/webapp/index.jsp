@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="container" style="width: 50%; margin-top: 15vh;">
-    <h1>Simple Calculator</h1>
+    <h1 class="text-center">Simple Calculator</h1>
     <form action="/calculate" method="post">
         <div class="form-group">
             <label for="number1-input-id">First Operand</label>
