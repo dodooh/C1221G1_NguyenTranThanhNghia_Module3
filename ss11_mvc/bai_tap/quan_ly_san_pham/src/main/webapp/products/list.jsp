@@ -18,14 +18,18 @@
 <body>
 <div class="shadow container table-responsive py-2">
     <div class="display-4 text-center">Customer List</div>
-    <div>
+    <div class="d-flex flex-row justify-content-between align-items-start">
         <a role="button" class="btn btn-success" href="/products?action=create"> + Create New
             Product</a>
-        <p class="d-inline">
-            <c:if test='${requestScope["message"] != null}'>
-                <span class="alert alert-success">${requestScope["message"]}</span>
-            </c:if>
-        </p>
+        <div style="width: 300px">
+            <form action="/products" method="get">
+                <div class="input-group">
+                    <input  name="keyword" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <input type="hidden" name="action" value="search">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <table class="table table-striped mt-2">
@@ -51,7 +55,7 @@
                 <td>${product.getDescription()}</td>
                 <td>${product.getManufactor()}</td>
                 <td><a class="btn btn-info" href="/customers?action=edit&id=${product.getId()}"
-                       role="button">edit</a></td>
+                       role="button">Edit</a></td>
 <%--                <td><a class="btn btn-danger"--%>
 <%--                       href="/customers?action=delete&id=${product.getId()}">delete</a></td>--%>
                 <td>

@@ -1,5 +1,7 @@
 package service.impl;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,6 +72,11 @@ public class ProductServiceImp implements IProductService<Product> {
     public void remove(int id) {
         int index = getIndexOfProduct(id);
         iProductRepository.remove(index);
+    }
+
+    @Override
+    public List<Product> search(String keyword) {
+        return getListProduct().stream().filter(c -> c.getName().contains(keyword)).collect(toList());
     }
 }
 

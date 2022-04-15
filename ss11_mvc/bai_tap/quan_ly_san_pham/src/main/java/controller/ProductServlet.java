@@ -30,9 +30,25 @@ public class ProductServlet extends HttpServlet {
             case "view":
                 showViewForm(request, response);
                 break;
+            case "search":
+                System.out.println("search");
+                searchProduct(request, response);
             default:
                 listProducts(request, response);
                 break;
+        }
+    }
+
+    private void searchProduct(HttpServletRequest request, HttpServletResponse response) {
+        String keyword = request.getParameter("keyword");
+        List<Product> result = iProductService.search(keyword);
+        System.out.println(result.size());
+        request.setAttribute("products", result );
+        RequestDispatcher dispatcher = request.getRequestDispatcher("products/list.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -128,8 +144,6 @@ public class ProductServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-
-
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));

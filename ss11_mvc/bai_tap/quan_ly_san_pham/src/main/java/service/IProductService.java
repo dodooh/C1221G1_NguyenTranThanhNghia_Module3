@@ -9,4 +9,6 @@ public interface IProductService<Product> {
     Product findById(int id);
     Map<String, String> update(int id, Product product);
     void remove(int index);
+
+    List<Product> search(String keyword);
 }
