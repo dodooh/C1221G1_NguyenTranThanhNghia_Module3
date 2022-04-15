@@ -54,4 +54,12 @@ public class Product {
         this.description = description;
         this.manufactor = manufactor;
     }
+
+    public Product(Product another) {
+        this.id = another.getId();
+        this.name = another.getName();
+        this.price = another.getPrice();
+        this.description = another.getDescription();
+        this.manufactor = another.getManufactor();
+    }
 }

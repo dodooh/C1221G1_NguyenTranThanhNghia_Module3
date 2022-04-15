@@ -1,5 +1,7 @@
 package repository;
 
-public interface IProductRepository {
+import model.Product;
+
+public interface IProductRepository extends ICrudRepository<Product>{
 
 }
