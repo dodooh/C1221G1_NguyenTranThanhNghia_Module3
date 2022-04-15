@@ -13,11 +13,12 @@
 
 <%--    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">--%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style><%@include file="/WEB-INF/css/style.css"%></style>
 
 </head>
 <body>
 <div class="shadow container table-responsive py-2">
-    <div class="display-4 text-center">Customer List</div>
+    <div class="display-4 text-center">Product List</div>
     <div class="d-flex flex-row justify-content-between align-items-start">
         <a role="button" class="btn btn-success" href="/products?action=create"> + Create New
             Product</a>
