@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Furama Resort Management</title>
-    <style>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">    <style>
         <%@include file="/WEB-INF/css/bootstrap.min.css" %>
     </style>
     <style>
@@ -24,7 +24,7 @@
 <body class="text-light">
 <c:import url="components/header.jsp"/> <%--Header--%>
 <c:import url="components/navbar.jsp"/> <%--Navbar--%>
-<div class="container-fluid px-0 bg-dark" style="margin-top: 144px;min-height: calc(100vh - 144px - 50px);">
+<div class="container-fluid px-0 bg-dark " style="margin-top: 144px;min-height: calc(100vh - 144px - 50px);">
     <div class="d-flex text-light w-100 h-100 justify-content-center align-items-center display-4">Welcome to Furama Resort Management System</div>
 </div>
 

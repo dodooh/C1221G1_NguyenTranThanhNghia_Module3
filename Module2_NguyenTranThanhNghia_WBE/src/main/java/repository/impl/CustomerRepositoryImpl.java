@@ -1,10 +1,13 @@
 package repository.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import model.Customer;
@@ -14,8 +17,9 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     private String jdbcURL = "jdbc:mysql://localhost:3306/furama_resort?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "codegym@2022";
-
-    private static final String SELECT_ALL_CUSTOMERS = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from customer";
+    private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    private static final String SELECT_ALL_CUSTOMERS = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer";
+    private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO furama_resort.customer (customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id) VALUES (?, ?, ?, ?, ?, ?, ?, ? );";
 
 
     public CustomerRepositoryImpl() {
@@ -64,6 +68,25 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             printSQLException(e);
         }
         return customerList;
+    }
+
+    @Override
+    public void insertOne(Customer customer) {
+        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMERS_SQL)) {
+// select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from customer
+            preparedStatement.setString(1, customer.getCustomerName());
+            preparedStatement.setDate(2, Date.valueOf(customer.getCustomerDob()));
+            preparedStatement.setInt(3, customer.getCustomerGender());
+            preparedStatement.setString(4, customer.getCustomerIdCard());
+            preparedStatement.setString(5, customer.getCustomerPhone());
+            preparedStatement.setString(6, customer.getCustomerMail());
+            preparedStatement.setString(7, customer.getCustomerAddress());
+            preparedStatement.setInt(8, customer.getCustomerTypeId());
+            System.out.println(preparedStatement);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
     }
 
 

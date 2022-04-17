@@ -5,7 +5,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link h5 mr-3 " href="/home" style="${urlPath eq 'home' ? 'color: #d1342f !important;' : ''} "
+                <a class="nav-link h5 mr-3 " href="/home" style="${urlPath eq 'home' or urlPath eq '' ? 'color: #d1342f !important;' : ''} "
                 >
                     Home <span class="sr-only">(current)</span>
                 </a>

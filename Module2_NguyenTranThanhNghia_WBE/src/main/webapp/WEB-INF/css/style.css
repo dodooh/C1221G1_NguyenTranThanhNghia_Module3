@@ -1,8 +1,5 @@
 body {
-  display:flex;
-  flex-direction:column;
   font-family: "Open Sans", sans-serif;
-  height:100vh;
 }
 
 h1 {

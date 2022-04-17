@@ -20,4 +20,9 @@ public class CustomerServiceImpl implements ICustomerService {
     public List<CustomerType> selectAllCustomerType() {
         return iCustomerTypeRepository.selectAll();
     }
+
+    @Override
+    public void insertOne(Customer customer) {
+        iCustomerRepository.insertOne(customer);
+    }
 }

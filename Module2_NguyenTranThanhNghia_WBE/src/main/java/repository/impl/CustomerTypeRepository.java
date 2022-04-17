@@ -53,6 +53,12 @@ public class CustomerTypeRepository implements ICustomerTypeRepository {
         }
         return customerList;
     }
+
+    @Override
+    public void insertOne(CustomerType customerType) {
+
+    }
+
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {

@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Furama Resort Management</title>
+    <title>Customer | List</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <style>
         <%@include file="/WEB-INF/css/bootstrap.min.css" %>
@@ -17,7 +18,7 @@
 <c:import url="../components/header.jsp"/> <%--Header--%>
 <c:import url="../components/navbar.jsp">
 </c:import> <%--Navbar--%>
-<div class="container-fluid px-0 bg-dark" style="margin-top: 144px;">
+<div class="container-fluid px-0 bg-dark" style="margin-top: 144px; min-height: calc(100vh - 144px - 50px);"">
     <div class="w-100 p-5 d-flex flex-wrap" style="overflow: auto;">
         <a href="/${urlPath}?action=create" class="btn btn-light">Create New ${title}</a>
         <div class="container-fluid mt-5 px-1">

@@ -9,7 +9,7 @@ public class Customer {
     private String customerPhone;
     private String customerMail;
     private String customerAddress;
-    private int customerTypeId;
+    private Integer customerTypeId;
 
     public Integer getCustomerId() {
         return customerId;
@@ -75,18 +75,18 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
-    public int getCustomerTypeId() {
+    public Integer getCustomerTypeId() {
         return customerTypeId;
     }
 
-    public void setCustomerTypeId(int customerTypeId) {
+    public void setCustomerTypeId(Integer customerTypeId) {
         this.customerTypeId = customerTypeId;
     }
 
     public Customer() {};
 
     public Customer(Integer customerId, String customerName, String customerDob, Integer customerGender, String customerIdCard,
-        String customerPhone, String customerMail, String customerAddress, int customerTypeId) {
+        String customerPhone, String customerMail, String customerAddress, Integer customerTypeId) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerDob = customerDob;

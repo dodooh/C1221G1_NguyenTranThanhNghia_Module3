@@ -7,4 +7,5 @@ import model.CustomerType;
 public interface ICustomerService {
     List<Customer> selectAllCustomer();
     List<CustomerType> selectAllCustomerType();
+    void insertOne(Customer customer);
 }
