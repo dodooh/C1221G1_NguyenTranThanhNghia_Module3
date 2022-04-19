@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +17,12 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     private String jdbcUsername = "root";
     private String jdbcPassword = "codegym@2022";
     private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-    private static final String SELECT_ALL_CUSTOMERS = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer";
+    private static final String SELECT_ALL_CUSTOMERS_SQL = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer";
+    private static final String FIND_CUSTOMER_BY_ID_SQL = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer where customer_id = ?";
+    private static final String UPDATE_CUSTOMER_SQL = "update furama_resort.customer set customer_name = ?, date_of_birth = ?, gender = ?, identify_number = ?, phone_number = ?, email = ?, address = ?, customer_type_id = ? where customer_id = ?";
+    private static final String DELETE_CUSTOMER_SQL = "delete from furama_resort.customer where customer_id = ?";
     private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO furama_resort.customer (customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id) VALUES (?, ?, ?, ?, ?, ?, ?, ? );";
+    private static final String SEARCH_CUSTOMERS_SQL = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer where customer_name LIKE ?";
 
 
     public CustomerRepositoryImpl() {
@@ -44,7 +47,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         try (Connection connection = getConnection();
 
             // Step 2:Create a statement using connection object
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMERS);) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMERS_SQL);) {
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
             ResultSet rs = preparedStatement.executeQuery();
@@ -89,6 +92,65 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         }
     }
 
+    @Override
+    public Customer findById(int id) {
+        try (Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_CUSTOMER_BY_ID_SQL);) {
+            preparedStatement.setInt(1, id);
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                Customer customer = new Customer();
+                customer.setCustomerId(rs.getInt("customer_id"));
+                customer.setCustomerName(rs.getString("customer_name"));
+                customer.setCustomerDob(rs.getString("date_of_birth"));
+                customer.setCustomerGender(rs.getInt("gender"));
+                customer.setCustomerIdCard(rs.getString("identify_number"));
+                customer.setCustomerPhone(rs.getString("phone_number"));
+                customer.setCustomerMail(rs.getString("email"));
+                customer.setCustomerAddress(rs.getString("address"));
+                customer.setCustomerTypeId(rs.getInt("customer_type_id"));
+                return customer;
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return null;
+    }
+
+    @Override
+    public void updateOne(Customer customer) {
+        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CUSTOMER_SQL)) {
+// select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from customer
+            preparedStatement.setString(1, customer.getCustomerName());
+            preparedStatement.setDate(2, Date.valueOf(customer.getCustomerDob()));
+            preparedStatement.setInt(3, customer.getCustomerGender());
+            preparedStatement.setString(4, customer.getCustomerIdCard());
+            preparedStatement.setString(5, customer.getCustomerPhone());
+            preparedStatement.setString(6, customer.getCustomerMail());
+            preparedStatement.setString(7, customer.getCustomerAddress());
+            preparedStatement.setInt(8, customer.getCustomerTypeId());
+            preparedStatement.setInt(9, customer.getCustomerId());
+            System.out.println(preparedStatement);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
+
+    @Override
+    public void deleteOne(Integer id) {
+        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER_SQL)) {
+// select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from customer
+            preparedStatement.setInt(1,id);
+            System.out.println(preparedStatement);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
+
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
@@ -104,5 +166,39 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
                 }
             }
         }
+    }
+
+    @Override
+    public List<Customer> search(String keyword) {
+        List<Customer> customerList = new ArrayList<>();
+        // Step 1: Establishing a Connection
+        try (Connection connection = getConnection();
+
+            // Step 2:Create a statement using connection object
+            PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_CUSTOMERS_SQL);) {
+            preparedStatement.setString(1, "%" + keyword + "%");
+            System.out.println(preparedStatement);
+            // Step 3: Execute the query or update query
+            ResultSet rs = preparedStatement.executeQuery();
+
+            // select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from customer
+            Customer customer = null;
+            while (rs.next()) {
+                customer = new Customer();
+                customer.setCustomerId(rs.getInt("customer_id"));
+                customer.setCustomerName(rs.getString("customer_name"));
+                customer.setCustomerDob(rs.getString("date_of_birth"));
+                customer.setCustomerGender(rs.getInt("gender"));
+                customer.setCustomerIdCard(rs.getString("identify_number"));
+                customer.setCustomerPhone(rs.getString("phone_number"));
+                customer.setCustomerMail(rs.getString("email"));
+                customer.setCustomerAddress(rs.getString("address"));
+                customer.setCustomerTypeId(rs.getInt("customer_type_id"));
+                customerList.add(customer);
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return customerList;
     }
 }

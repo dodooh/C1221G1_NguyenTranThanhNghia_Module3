@@ -6,4 +6,10 @@ import model.Customer;
 public interface ICRUDRepository<E> {
     List<E> selectAll();
     void insertOne(E e);
+
+    Customer findById(int id);
+
+    void updateOne(E e);
+
+    void deleteOne(Integer id);
 }

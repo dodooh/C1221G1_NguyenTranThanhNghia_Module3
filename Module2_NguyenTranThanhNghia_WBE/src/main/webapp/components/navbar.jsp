@@ -35,8 +35,9 @@
                 </a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2 bg-dark btn-outline-light" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" action="/${urlPath}" method="get">
+            <input type="hidden" name="action" value="search">
+            <input name="w" class="form-control mr-sm-2 bg-dark btn-outline-light" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>

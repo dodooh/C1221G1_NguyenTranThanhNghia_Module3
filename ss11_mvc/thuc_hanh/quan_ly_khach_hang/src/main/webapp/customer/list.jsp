@@ -10,8 +10,8 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
           crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <link rel="stylesheet"
+          href="/datatables/css/dataTables.bootstrap4.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
@@ -21,10 +21,7 @@
 </head>
 <body>
 <%--Set tieu de cho header--%>
-<c:set var="title" value="List View Mode" scope="request"/>
-<jsp:include page="../header.jsp">
-    <jsp:param name="title" value="${title}"/>
-</jsp:include>
+<c:include page="../header.jsp"/>
 <%----%>
 <div class="shadow container table-responsive py-5">
     <h1 class="text-center">Customer List</h1>
@@ -32,7 +29,7 @@
         <a role="button" class="btn btn-success" href="/customers?action=create"> + Create new
             customer</a>
     </p>
-    <table class="table table-striped">
+    <table id="tableCustomer" class="table table-striped">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Name</th>
@@ -71,6 +68,10 @@
         </c:forEach>
         </tbody>
     </table>
+    <select id="pageLenth">
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
 </div>
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -99,7 +100,23 @@
         </div>
     </div>
 </div>
+<script src="/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script>
+
+  // $('#pageLenth').change(function (){
+  //   num = this.value;
+  //   alert(num);
+  //   reload(num);
+  // })
+  $(document).ready(function () {
+    $('#tableCustomer').dataTable({
+      "dom": 'lrtip',
+      "lengthChange": false,
+      "pageLength": 4
+    })
+  })
+
   function infoDelete(id, name, email, address) {
     document.getElementById("id_delete").value = id;
     document.getElementById("name_delete").innerText = "Name: " +  name;

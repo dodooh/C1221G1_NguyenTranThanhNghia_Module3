@@ -15,6 +15,10 @@ h1 {
   --dutch-white: #eee3c1ff;
 }
 
+.modal-content {
+  background-color: #434038;
+}
+
 .text-light {
   color: #eee3c1 !important;
 }
