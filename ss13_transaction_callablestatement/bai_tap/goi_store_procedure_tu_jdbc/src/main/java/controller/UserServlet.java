@@ -88,7 +88,6 @@ public class UserServlet extends HttpServlet {
 
     private void testUseTran(HttpServletRequest request, HttpServletResponse response) {
         userDAO.insertUpdateUseTransaction();
-
     }
 
     private void testWithoutTran(HttpServletRequest request, HttpServletResponse response) {
