@@ -6,11 +6,10 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Employees | List</title>
+    <title>${title} | List</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/bootstrap413/css/bootstrap.min.css">
     <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -24,15 +23,14 @@
             crossorigin="anonymous"></script>
 
     <style>
-        <%--        <%@include file="/WEB-INF/css/bootstrap.min.css" %>--%>
         <%@include file="/WEB-INF/css/style.css" %>
-        <%--        <%@include file="/datatables/css/dataTables.bootstrap4.min.css" %>--%>
     </style>
 </head>
 
 <body class="text-light">
 <c:import url="../../components/header.jsp"/> <%--Header--%>
-<c:import url="../../components/navbar.jsp">
+<c:import url="../../components/navbar_entity.jsp">
+
 </c:import> <%--Navbar--%>
 <div class="container-fluid px-0 bg-dark"
      style="margin-top: 144px; min-height: calc(100vh - 144px - 50px);">
@@ -132,14 +130,14 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/customers" method="post">
+            <form action="/${urlPath}" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="action" value="delete">
                     <input type="hidden" id="id_delete" name="id">
 
                     <div id="name_delete"></div>
-                    <div id="email_delete"></div>
-                    <div id="address_delete"></div>
+                    <div id="dob_delete"></div>
+                    <div id="idcard_delete"></div>
 
                     <div class="text-danger">WARNING: YOU CAN NOT ROLLBACK AFTER DELETE!!!</div>
                 </div>
@@ -165,8 +163,8 @@
   function infoDelete(id, name, dob, idCard) {
     document.getElementById("id_delete").value = id;
     document.getElementById("name_delete").innerText = "Name: " + name;
-    document.getElementById("email_delete").innerText = "Email " + email;
-    document.getElementById("address_delete").innerText = "Address: " + address;
+    document.getElementById("dob_delete").innerText = "DOB " + dob;
+    document.getElementById("idcard_delete").innerText = "ID Card: " + idCard;
   }
 
 </script>

@@ -1,6 +1,7 @@
 package model;
 
 public class CustomerType {
+
     private Integer customerTypeId;
     private String customerTypeName;
 

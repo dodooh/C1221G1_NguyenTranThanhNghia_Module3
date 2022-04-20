@@ -13,8 +13,8 @@ import repository.ICustomerTypeRepository;
 
 public class CustomerTypeRepositoryImpl implements ICustomerTypeRepository {
 
-    private BaseRepository baseRepository = BaseRepository.getInstance();
     private static final String SELECT_ALL_CUSTOMER_TYPES = "select customer_type_id, customer_type_name from furama_resort.customer_type";
+    private BaseRepository baseRepository = BaseRepository.getInstance();
 
     @Override
     public List<CustomerType> selectAll() {

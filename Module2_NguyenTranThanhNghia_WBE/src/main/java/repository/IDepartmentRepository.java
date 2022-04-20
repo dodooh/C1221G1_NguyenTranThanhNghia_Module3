@@ -5,6 +5,7 @@ import model.Department;
 import model.Position;
 
 public interface IDepartmentRepository {
+
     List<Department> selectAll();
 
 }

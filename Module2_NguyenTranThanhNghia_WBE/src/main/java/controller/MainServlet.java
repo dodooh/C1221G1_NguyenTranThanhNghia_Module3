@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "MainServlet", urlPatterns = {"","/home"})
+@WebServlet(name = "MainServlet", urlPatterns = {"", "/home"})
 public class MainServlet extends HttpServlet {
 
     @Override

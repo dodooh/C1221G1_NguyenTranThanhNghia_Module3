@@ -7,6 +7,7 @@ import repository.impl.PositionRepositoryImpl;
 import service.IPositionService;
 
 public class PositionServiceImpl implements IPositionService {
+
     private IPositionRepository iPositionRepository = new PositionRepositoryImpl();
 
     @Override

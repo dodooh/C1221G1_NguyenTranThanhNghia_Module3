@@ -1,6 +1,7 @@
 package model;
 
 public class EducationDegree {
+
     private Integer educationDegreeId;
     private String educationDegreeName;
 

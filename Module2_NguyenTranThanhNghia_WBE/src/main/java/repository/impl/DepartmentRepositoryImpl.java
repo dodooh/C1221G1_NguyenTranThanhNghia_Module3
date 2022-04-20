@@ -10,8 +10,9 @@ import model.Department;
 import repository.IDepartmentRepository;
 
 public class DepartmentRepositoryImpl implements IDepartmentRepository {
-    private BaseRepository baseRepository = BaseRepository.getInstance();
+
     private static final String SELECT_ALL_DEPARTMENTS = "select department_id, department_name from furama_resort.department";
+    private BaseRepository baseRepository = BaseRepository.getInstance();
 
     @Override
     public List<Department> selectAll() {

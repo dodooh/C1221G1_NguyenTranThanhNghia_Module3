@@ -9,7 +9,6 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/bootstrap413/css/bootstrap.min.css">
     <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -23,15 +22,13 @@
             crossorigin="anonymous"></script>
 
     <style>
-        <%--        <%@include file="/WEB-INF/css/bootstrap.min.css" %>--%>
         <%@include file="/WEB-INF/css/style.css" %>
-        <%--        <%@include file="/datatables/css/dataTables.bootstrap4.min.css" %>--%>
     </style>
 </head>
 
 <body class="text-light">
 <c:import url="../../components/header.jsp"/> <%--Header--%>
-<c:import url="../../components/navbar_customer.jsp">
+<c:import url="../../components/navbar_entity.jsp">
 </c:import> <%--Navbar--%>
 <div class="container-fluid px-0 bg-dark"
      style="margin-top: 144px; min-height: calc(100vh - 144px - 50px);">

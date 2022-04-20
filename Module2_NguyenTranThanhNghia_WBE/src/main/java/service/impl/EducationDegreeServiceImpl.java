@@ -7,6 +7,7 @@ import repository.impl.EducationDegreeRepositoryImpl;
 import service.IEducationDegreeService;
 
 public class EducationDegreeServiceImpl implements IEducationDegreeService {
+
     private IEducationDegreeRepository iEducationDegreeRepository = new EducationDegreeRepositoryImpl();
 
     @Override

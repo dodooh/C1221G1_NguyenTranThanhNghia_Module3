@@ -11,9 +11,9 @@ import model.Position;
 import repository.IPositionRepository;
 
 public class PositionRepositoryImpl implements IPositionRepository {
-    private BaseRepository baseRepository = BaseRepository.getInstance();
-    private static final String SELECT_ALL_POSITION = "select position_id, position_name from furama_resort.position";
 
+    private static final String SELECT_ALL_POSITION = "select position_id, position_name from furama_resort.position";
+    private BaseRepository baseRepository = BaseRepository.getInstance();
 
     @Override
     public List<Position> selectAll() {

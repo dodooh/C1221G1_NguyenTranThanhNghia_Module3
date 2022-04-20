@@ -1,8 +1,17 @@
 package model;
 
 public class Position {
+
     private Integer positionId;
     private String positionName;
+
+    public Position() {
+    }
+
+    public Position(Integer positionId, String positionName) {
+        this.positionId = positionId;
+        this.positionName = positionName;
+    }
 
     public Integer getPositionId() {
         return positionId;
@@ -17,14 +26,6 @@ public class Position {
     }
 
     public void setPositionName(String positionName) {
-        this.positionName = positionName;
-    }
-
-    public Position() {
-    }
-
-    public Position(Integer positionId, String positionName) {
-        this.positionId = positionId;
         this.positionName = positionName;
     }
 }

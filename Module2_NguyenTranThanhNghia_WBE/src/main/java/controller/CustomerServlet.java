@@ -1,5 +1,6 @@
 package controller;
 
+import java.net.URL;
 import java.util.Arrays;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,14 +14,19 @@ import service.impl.CustomerTypeServiceImpl;
 
 @WebServlet(name = "CustomerServlet", value = "/customers")
 public class CustomerServlet extends HttpServlet {
+
+    public static final String TITLE = "Customer";
+    public static final String URL_PATH = "customers";
     private final String ROOT_PATH = "/view/customers/";
     ICustomerService iCustomerService = new CustomerServiceImpl();
-    ICustomerTypeService iCustomerTypeService= new CustomerTypeServiceImpl();
+    ICustomerTypeService iCustomerTypeService = new CustomerTypeServiceImpl();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
+        request.setAttribute("urlPath", URL_PATH);
+        request.setAttribute("title", TITLE);
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -49,7 +55,7 @@ public class CustomerServlet extends HttpServlet {
             Customer customer = iCustomerService.findById(customerId);
             try {
                 if (customer == null) {
-                    response.sendRedirect("error-404.jsp");
+                    response.sendRedirect("view/error-404.jsp");
                 } else {
                     iCustomerService.deleteCustomer(customerId);
                     response.sendRedirect("customers");
@@ -58,7 +64,7 @@ public class CustomerServlet extends HttpServlet {
                 e.printStackTrace();
             }
         } else { /*multiple xoa*/
-            for(String customerId : request.getParameterValues("idToDelete")) {
+            for (String customerId : request.getParameterValues("idToDelete")) {
                 iCustomerService.deleteCustomer(Integer.parseInt(customerId));
             }
             try {
@@ -86,11 +92,9 @@ public class CustomerServlet extends HttpServlet {
         iCustomerService.updateOne(customer);
         request.setAttribute("message", "Success");
         try {
-            request.setAttribute("urlPath", "customers");
-            request.setAttribute("title", "Customer");
             request.setAttribute("customer", customer);
             request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
-            request.getRequestDispatcher(ROOT_PATH +  "edit.jsp").forward(request, response);
+            request.getRequestDispatcher(ROOT_PATH + "edit.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
@@ -115,8 +119,7 @@ public class CustomerServlet extends HttpServlet {
 
         request.setAttribute("message", "Success");
         try {
-            request.setAttribute("urlPath", "customers");
-            request.setAttribute("title", "Customer");
+
             request.setAttribute("customer", customer);
             request.getRequestDispatcher(ROOT_PATH + "create.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
@@ -126,6 +129,8 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        request.setAttribute("urlPath", URL_PATH);
+        request.setAttribute("title", TITLE);
         String url = String.valueOf(request.getRequestURL());
         System.out.println("GET" + url.substring(url.lastIndexOf("/") + 1));
         String action = request.getParameter("action");
@@ -154,25 +159,23 @@ public class CustomerServlet extends HttpServlet {
         name = name == null ? "" : name;
         phone = phone == null ? "" : phone;
         mail = mail == null ? "" : mail;
-        request.setAttribute("urlPath", "customers");
-        request.setAttribute("title", "Customer");
         request.setAttribute("customers", iCustomerService.search(name, phone, mail));
         request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
         try {
-            request.getRequestDispatcher(ROOT_PATH  + "list.jsp").forward(request, response);
+            request.getRequestDispatcher(ROOT_PATH + "list.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("urlPath", "customers");
-        request.setAttribute("title", "Customer");
+        request.setAttribute("urlPath", URL_PATH);
+        request.setAttribute("title", TITLE);
         int id = Integer.parseInt(request.getParameter("id"));
         Customer customer = iCustomerService.findById(id);
         try {
             if (customer == null) {
-                response.sendRedirect(  "/view/error-404.jsp");
+                response.sendRedirect("/view/error-404.jsp");
             } else {
                 request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
                 request.setAttribute("customer", customer);
@@ -184,8 +187,6 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("urlPath", "customers");
-        request.setAttribute("title", "Customer");
         request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
         try {
             request.getRequestDispatcher(ROOT_PATH + "create.jsp").forward(request, response);
@@ -195,8 +196,6 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showListCustomers(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("urlPath", "customers");
-        request.setAttribute("title", "Customer");
         request.setAttribute("customers", iCustomerService.selectAllCustomer());
         request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
         try {

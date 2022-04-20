@@ -5,7 +5,9 @@ import model.Customer;
 import model.CustomerType;
 
 public interface ICustomerService {
+
     List<Customer> selectAllCustomer();
+
     void insertOne(Customer customer);
 
     Customer findById(int id);

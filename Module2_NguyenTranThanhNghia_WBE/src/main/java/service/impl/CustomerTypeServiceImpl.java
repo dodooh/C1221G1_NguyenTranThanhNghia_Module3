@@ -7,6 +7,7 @@ import repository.impl.CustomerTypeRepositoryImpl;
 import service.ICustomerTypeService;
 
 public class CustomerTypeServiceImpl implements ICustomerTypeService {
+
     ICustomerTypeRepository iCustomerTypeRepository = new CustomerTypeRepositoryImpl();
 
     @Override

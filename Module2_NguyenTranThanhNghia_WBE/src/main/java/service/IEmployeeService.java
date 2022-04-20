@@ -1,11 +1,7 @@
 package service;
 
 import java.util.List;
-import model.Customer;
-import model.Department;
-import model.EducationDegree;
 import model.Employee;
-import model.Position;
 
 public interface IEmployeeService {
 
@@ -14,4 +10,10 @@ public interface IEmployeeService {
     void insertOne(Employee employee);
 
     Employee findById(int id);
+
+    void updateOne(Employee employee);
+
+    void deleteEmployee(Integer idToDelete);
+
+    List<Employee> search(String name, String phone, String mail);
 }

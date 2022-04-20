@@ -5,5 +5,6 @@ import model.EducationDegree;
 import model.Position;
 
 public interface IEducationDegreeRepository {
+
     List<EducationDegree> selectAll();
 }

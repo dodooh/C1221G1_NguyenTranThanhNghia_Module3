@@ -1,6 +1,7 @@
 package model;
 
 public class Customer {
+
     private Integer customerId;
     private String customerName;
     private String customerDob;
@@ -10,6 +11,22 @@ public class Customer {
     private String customerMail;
     private String customerAddress;
     private Integer customerTypeId;
+
+    public Customer() {
+    }
+
+    public Customer(Integer customerId, String customerName, String customerDob, Integer customerGender, String customerIdCard,
+        String customerPhone, String customerMail, String customerAddress, Integer customerTypeId) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.customerDob = customerDob;
+        this.customerGender = customerGender;
+        this.customerIdCard = customerIdCard;
+        this.customerPhone = customerPhone;
+        this.customerMail = customerMail;
+        this.customerAddress = customerAddress;
+        this.customerTypeId = customerTypeId;
+    }
 
     public Integer getCustomerId() {
         return customerId;
@@ -79,22 +96,9 @@ public class Customer {
         return customerTypeId;
     }
 
+    ;
+
     public void setCustomerTypeId(Integer customerTypeId) {
-        this.customerTypeId = customerTypeId;
-    }
-
-    public Customer() {};
-
-    public Customer(Integer customerId, String customerName, String customerDob, Integer customerGender, String customerIdCard,
-        String customerPhone, String customerMail, String customerAddress, Integer customerTypeId) {
-        this.customerId = customerId;
-        this.customerName = customerName;
-        this.customerDob = customerDob;
-        this.customerGender = customerGender;
-        this.customerIdCard = customerIdCard;
-        this.customerPhone = customerPhone;
-        this.customerMail = customerMail;
-        this.customerAddress = customerAddress;
         this.customerTypeId = customerTypeId;
     }
 

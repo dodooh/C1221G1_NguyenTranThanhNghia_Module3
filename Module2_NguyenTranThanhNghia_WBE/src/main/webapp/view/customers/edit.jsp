@@ -5,30 +5,40 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Customer | Edit </title>
+    <title>${title} | Edit </title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+            crossorigin="anonymous"></script>
     <style>
-        <%@include file="/WEB-INF/css/bootstrap.min.css" %>
+
         <%@include file="/WEB-INF/css/style.css" %>
     </style>
 </head>
 <body class="text-light">
 <c:import url="../../components/header.jsp"/> <%--Header--%>
-<c:import url="../../components/navbar_customer.jsp">
+<c:import url="../../components/navbar_entity.jsp">
 </c:import> <%--Navbar--%>
 <div class="container-fluid h-100 px-0 bg-dark"
      style="margin-top: 144px; ">
     <div class="w-100 p-5">
-        <a href="/customers" class="btn btn-light">Back to customer list</a>
+        <a href="/${urlPath}" class="btn btn-light">Back to ${title} list</a>
         <div class="container px-1">
             <form method="post" class="bg-dark">
                 <%-- customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id --%>
                 <div class="form-group row">
                     <div class="col-sm-3 control-label text-right"></div>
                     <div class="col-sm-9">
-                        <h4 class="col-sm-9 control-label px-0 mx-0">Edit Customer</h4>
+                        <h4 class="col-sm-9 control-label px-0 mx-0">Edit ${title}</h4>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -37,7 +47,7 @@
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="customer_name"
                                name="customer_name"
-                        value="${customer.customerName}">
+                               value="${customer.customerName}">
                         <%--                        <small id="emailHelp" class="form-text text-muted">We'll never share your email--%>
                         <%--                            with anyone else.</small>--%>
                     </div>
@@ -64,7 +74,7 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="gender" value="1"
                                    id="male" <c:out value="${isMale}"/>>
-                            <label class="form-check-label" for="male" >
+                            <label class="form-check-label" for="male">
                                 Male&nbsp;
                             </label>
                         </div>
@@ -123,7 +133,8 @@
                             <c:forEach items="${customerTypes}" var="type">
                                 <c:choose>
                                     <c:when test="${type.customerTypeId eq customer.customerTypeId}">
-                                        <option value="${type.customerTypeId}" selected>${type.customerTypeName}</option>
+                                        <option value="${type.customerTypeId}"
+                                                selected>${type.customerTypeName}</option>
                                     </c:when>
                                     <c:otherwise>
                                         <option value="${type.customerTypeId}">${type.customerTypeName}</option>
@@ -151,10 +162,10 @@
 </div>
 
 <c:import url="../../components/footer.jsp"/> <%--Footer--%>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/WEB-INF/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/WEB-INF/js/jquery-3.6.0.min.js"></script>
+<%--<script type="text/javascript"--%>
+<%--        src="${pageContext.request.contextPath}/WEB-INF/js/bootstrap.bundle.min.js"></script>--%>
+<%--<script type="text/javascript"--%>
+<%--        src="${pageContext.request.contextPath}/WEB-INF/js/jquery-3.6.0.min.js"></script>--%>
 </body>
 
 </html>

@@ -10,7 +10,9 @@ import repository.impl.CustomerTypeRepositoryImpl;
 import service.ICustomerService;
 
 public class CustomerServiceImpl implements ICustomerService {
+
     ICustomerRepository iCustomerRepository = new CustomerRepositoryImpl();
+
     @Override
     public List<Customer> selectAllCustomer() {
         return iCustomerRepository.selectAll();

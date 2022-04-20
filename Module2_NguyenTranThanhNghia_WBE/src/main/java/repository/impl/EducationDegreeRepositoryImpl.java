@@ -11,8 +11,9 @@ import model.Position;
 import repository.IEducationDegreeRepository;
 
 public class EducationDegreeRepositoryImpl implements IEducationDegreeRepository {
-    private BaseRepository baseRepository = BaseRepository.getInstance();
+
     private static final String SELECT_ALL_EDUCATION_DEGREE = "select education_degree_id, education_degree_name from furama_resort.education_degree";
+    private BaseRepository baseRepository = BaseRepository.getInstance();
 
     @Override
     public List<EducationDegree> selectAll() {
@@ -33,6 +34,7 @@ public class EducationDegreeRepositoryImpl implements IEducationDegreeRepository
         }
         return educationDegrees;
     }
+
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {

@@ -9,13 +9,12 @@ import service.IEmployeeService;
 
 public class EmployeeServiceImpl implements IEmployeeService {
 
-    private IEmployeeRepository iEmployeeRepository = new EmployeeRepositoryImpl();
+    private final IEmployeeRepository iEmployeeRepository = new EmployeeRepositoryImpl();
 
     @Override
     public List<Employee> selectAllEmployee() {
         return iEmployeeRepository.selectAll();
     }
-
 
 
     @Override
@@ -26,6 +25,21 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public Employee findById(int id) {
         return iEmployeeRepository.findById(id);
+    }
+
+    @Override
+    public void updateOne(Employee employee) {
+        iEmployeeRepository.updateOne(employee);
+    }
+
+    @Override
+    public void deleteEmployee(Integer idToDelete) {
+        iEmployeeRepository.deleteOne(idToDelete);
+    }
+
+    @Override
+    public List<Employee> search(String name, String phone, String mail) {
+        return iEmployeeRepository.search(name, phone, mail);
     }
 
 

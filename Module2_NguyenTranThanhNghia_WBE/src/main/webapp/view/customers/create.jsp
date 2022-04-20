@@ -6,16 +6,26 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Customer | Create </title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">    <link rel="stylesheet"
-                                                                       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+          crossorigin="anonymous">
     <style>
-        <%@include file="/WEB-INF/css/bootstrap.min.css" %>
         <%@include file="/WEB-INF/css/style.css" %>
     </style>
 </head>
 <body class="text-light">
 <c:import url="../../components/header.jsp"/> <%--Header--%>
-<c:import url="../../components/navbar_customer.jsp">
+<c:import url="../../components/navbar_entity.jsp">
 </c:import> <%--Navbar--%>
 <div class="container-fluid h-100 px-0 bg-dark"
      style="margin-top: 144px; ">
@@ -44,7 +54,8 @@
                     <label for="date_of_birth"
                            class="col-sm-3 col-form-label text-right">Birthday</label>
                     <div class="col-sm-9">
-                        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth">
+                        <input type="date" class="form-control" id="date_of_birth"
+                               name="date_of_birth">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -103,7 +114,8 @@
                     <label for="address"
                            class="col-sm-3 col-form-label text-right">Customer Type</label>
                     <div class="col-sm-9">
-                        <select name="customer_type_id" class="form-select" aria-label="Default select example">
+                        <select name="customer_type_id" class="form-select"
+                                aria-label="Default select example">
                             <option selected>Choose Customer Type</option>
                             <c:forEach items="${customerTypes}" var="type">
                                 <option value="${type.customerTypeId}">${type.customerTypeName}</option>
@@ -129,10 +141,6 @@
 </div>
 
 <c:import url="../../components/footer.jsp"/> <%--Footer--%>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/WEB-INF/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/WEB-INF/js/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>

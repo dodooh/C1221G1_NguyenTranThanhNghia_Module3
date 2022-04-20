@@ -12,14 +12,13 @@ import repository.ICustomerRepository;
 
 public class CustomerRepositoryImpl implements ICustomerRepository {
 
-    private BaseRepository baseRepository = BaseRepository.getInstance();
-
     private static final String SELECT_ALL_CUSTOMERS_SQL = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer";
     private static final String FIND_CUSTOMER_BY_ID_SQL = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer where customer_id = ?";
     private static final String UPDATE_CUSTOMER_SQL = "update furama_resort.customer set customer_name = ?, date_of_birth = ?, gender = ?, identify_number = ?, phone_number = ?, email = ?, address = ?, customer_type_id = ? where customer_id = ?";
     private static final String DELETE_CUSTOMER_SQL = "delete from furama_resort.customer where customer_id = ?";
     private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO furama_resort.customer (customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id) VALUES (?, ?, ?, ?, ?, ?, ?, ? );";
     private static final String SEARCH_CUSTOMERS_SQL = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer where customer_name LIKE ? and phone_number LIKE ? and email LIKE ?";
+    private BaseRepository baseRepository = BaseRepository.getInstance();
 
 
     public CustomerRepositoryImpl() {
@@ -132,7 +131,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER_SQL)) {
 // select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from customer
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -160,19 +159,13 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     @Override
     public List<Customer> search(String keyword, String phone, String mail) {
         List<Customer> customerList = new ArrayList<>();
-        // Step 1: Establishing a Connection
         try (Connection connection = baseRepository.getConnection();
-
-            // Step 2:Create a statement using connection object
             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_CUSTOMERS_SQL);) {
             preparedStatement.setString(1, "%" + keyword + "%");
             preparedStatement.setString(2, "%" + phone + "%");
             preparedStatement.setString(3, "%" + mail + "%");
             System.out.println(preparedStatement);
-            // Step 3: Execute the query or update query
             ResultSet rs = preparedStatement.executeQuery();
-
-            // select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from customer
             Customer customer = null;
             while (rs.next()) {
                 customer = new Customer();
