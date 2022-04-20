@@ -6,7 +6,6 @@ import model.CustomerType;
 
 public interface ICustomerService {
     List<Customer> selectAllCustomer();
-    List<CustomerType> selectAllCustomerType();
     void insertOne(Customer customer);
 
     Customer findById(int id);
@@ -15,5 +14,5 @@ public interface ICustomerService {
 
     void deleteCustomer(Integer id);
 
-    List<Customer> search(String keyword);
+    List<Customer> search(String keyword, String phone, String mail);
 }

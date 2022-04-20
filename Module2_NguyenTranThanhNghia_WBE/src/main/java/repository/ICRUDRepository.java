@@ -2,12 +2,13 @@ package repository;
 
 import java.util.List;
 import model.Customer;
+import model.Employee;
 
 public interface ICRUDRepository<E> {
     List<E> selectAll();
     void insertOne(E e);
 
-    Customer findById(int id);
+    E findById(int id);
 
     void updateOne(E e);
 

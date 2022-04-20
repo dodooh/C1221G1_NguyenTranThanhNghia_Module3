@@ -1,8 +1,6 @@
 package service.impl;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import model.Customer;
 import model.CustomerType;
 import repository.ICustomerRepository;
@@ -13,15 +11,11 @@ import service.ICustomerService;
 
 public class CustomerServiceImpl implements ICustomerService {
     ICustomerRepository iCustomerRepository = new CustomerRepositoryImpl();
-    ICustomerTypeRepository iCustomerTypeRepository = new CustomerTypeRepositoryImpl();
     @Override
     public List<Customer> selectAllCustomer() {
         return iCustomerRepository.selectAll();
     }
-    @Override
-    public List<CustomerType> selectAllCustomerType() {
-        return iCustomerTypeRepository.selectAll();
-    }
+
 
     @Override
     public void insertOne(Customer customer) {
@@ -44,7 +38,7 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public List<Customer> search(String keyword) {
-        return iCustomerRepository.search(keyword);
+    public List<Customer> search(String keyword, String phone, String mail) {
+        return iCustomerRepository.search(keyword, phone, mail);
     }
 }

@@ -14,7 +14,7 @@ public class MainServlet extends HttpServlet {
         String url = String.valueOf(request.getRequestURL());
         System.out.println(url.substring(url.lastIndexOf("/") + 1));
         request.setAttribute("urlPath", "home");
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        request.getRequestDispatcher("/view/home.jsp").forward(request, response);
     }
 
     @Override

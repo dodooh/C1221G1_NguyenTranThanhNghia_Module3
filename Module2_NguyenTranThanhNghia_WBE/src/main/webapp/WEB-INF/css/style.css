@@ -14,7 +14,9 @@ h1 {
   --black-olive: #434038ff;
   --dutch-white: #eee3c1ff;
 }
-
+input[type=checkbox] {
+  transform: scale(1.5);
+}
 .modal-content {
   background-color: #434038;
 }
