@@ -24,6 +24,8 @@
     <div class="d-flex text-light w-100 h-100 justify-content-center">
         <div class="display-4" style="margin-top: 100px;">Welcome to Furama Resort Management
             System
+            <br>
+            Welcome ${sessionScope["name_session"]}
         </div>
     </div>
 </div>

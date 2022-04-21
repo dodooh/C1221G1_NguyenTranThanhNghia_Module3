@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.EducationDegree;
-import model.Position;
 import repository.IEducationDegreeRepository;
 
 public class EducationDegreeRepositoryImpl implements IEducationDegreeRepository {

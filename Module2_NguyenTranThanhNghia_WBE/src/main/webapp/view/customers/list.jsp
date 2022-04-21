@@ -43,6 +43,7 @@
                     <thead class="thead-light">
                     <th><input type="checkbox" id="checkboxAll"></th>
                     <th scope="col">#</th>
+                    <th scope="col">Code</th>
                     <th scope="col">Name</th>
                     <th scope="col">DOB</th>
                     <th scope="col">Gender</th>
@@ -59,6 +60,7 @@
                             <td><input type="checkbox" class="chkCheckBoxToDelete"
                                        value="${customer.getCustomerId()}" name="idToDelete"></td>
                             <td>${loop.count}</td>
+                            <td>${customer.getCustomerCode()}</td>
                             <td>${customer.getCustomerName()}</td>
                             <td>${customer.getCustomerDob()}</td>
                             <td>${customer.getCustomerGender() == 1 ? "Male" : "Female"}</td>

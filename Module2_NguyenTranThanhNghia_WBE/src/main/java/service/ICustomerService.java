@@ -1,18 +1,18 @@
 package service;
 
 import java.util.List;
+import java.util.Map;
 import model.Customer;
-import model.CustomerType;
 
 public interface ICustomerService {
 
     List<Customer> selectAllCustomer();
 
-    void insertOne(Customer customer);
+    Map<String, String> insertOne(Customer customer);
 
     Customer findById(int id);
 
-    void updateOne(Customer customer);
+    Map<String, String> updateOne(Customer customer);
 
     void deleteCustomer(Integer id);
 

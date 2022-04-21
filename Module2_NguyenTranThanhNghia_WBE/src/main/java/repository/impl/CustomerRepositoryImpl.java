@@ -12,12 +12,12 @@ import repository.ICustomerRepository;
 
 public class CustomerRepositoryImpl implements ICustomerRepository {
 
-    private static final String SELECT_ALL_CUSTOMERS_SQL = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer";
-    private static final String FIND_CUSTOMER_BY_ID_SQL = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer where customer_id = ?";
-    private static final String UPDATE_CUSTOMER_SQL = "update furama_resort.customer set customer_name = ?, date_of_birth = ?, gender = ?, identify_number = ?, phone_number = ?, email = ?, address = ?, customer_type_id = ? where customer_id = ?";
+    private static final String SELECT_ALL_CUSTOMERS_SQL = "select customer_id, customer_code, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer";
+    private static final String FIND_CUSTOMER_BY_ID_SQL = "select customer_id,customer_code, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer where customer_id = ?";
+    private static final String UPDATE_CUSTOMER_SQL = "update furama_resort.customer set customer_code = ?, customer_name = ?, date_of_birth = ?, gender = ?, identify_number = ?, phone_number = ?, email = ?, address = ?, customer_type_id = ? where customer_id = ?";
     private static final String DELETE_CUSTOMER_SQL = "delete from furama_resort.customer where customer_id = ?";
-    private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO furama_resort.customer (customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id) VALUES (?, ?, ?, ?, ?, ?, ?, ? );";
-    private static final String SEARCH_CUSTOMERS_SQL = "select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer where customer_name LIKE ? and phone_number LIKE ? and email LIKE ?";
+    private static final String INSERT_CUSTOMERS_SQL = "INSERT INTO furama_resort.customer (customer_code,customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id) VALUES (?,?, ?, ?, ?, ?, ?, ?, ? );";
+    private static final String SEARCH_CUSTOMERS_SQL = "select customer_code, customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer where customer_name LIKE ? and phone_number LIKE ? and email LIKE ?";
     private BaseRepository baseRepository = BaseRepository.getInstance();
 
 
@@ -30,18 +30,14 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         List<Customer> customerList = new ArrayList<>();
         // Step 1: Establishing a Connection
         try (Connection connection = baseRepository.getConnection();
-
-            // Step 2:Create a statement using connection object
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMERS_SQL);) {
             System.out.println(preparedStatement);
-            // Step 3: Execute the query or update query
             ResultSet rs = preparedStatement.executeQuery();
-
-            // select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from customer
             Customer customer = null;
             while (rs.next()) {
                 customer = new Customer();
                 customer.setCustomerId(rs.getInt("customer_id"));
+                customer.setCustomerCode(rs.getString("customer_code"));
                 customer.setCustomerName(rs.getString("customer_name"));
                 customer.setCustomerDob(rs.getString("date_of_birth"));
                 customer.setCustomerGender(rs.getInt("gender"));
@@ -63,14 +59,15 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMERS_SQL)) {
 // select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from customer
-            preparedStatement.setString(1, customer.getCustomerName());
-            preparedStatement.setDate(2, Date.valueOf(customer.getCustomerDob()));
-            preparedStatement.setInt(3, customer.getCustomerGender());
-            preparedStatement.setString(4, customer.getCustomerIdCard());
-            preparedStatement.setString(5, customer.getCustomerPhone());
-            preparedStatement.setString(6, customer.getCustomerMail());
-            preparedStatement.setString(7, customer.getCustomerAddress());
-            preparedStatement.setInt(8, customer.getCustomerTypeId());
+            preparedStatement.setString(1, customer.getCustomerCode());
+            preparedStatement.setString(2, customer.getCustomerName());
+            preparedStatement.setDate(3, Date.valueOf(customer.getCustomerDob()));
+            preparedStatement.setInt(4, customer.getCustomerGender());
+            preparedStatement.setString(5, customer.getCustomerIdCard());
+            preparedStatement.setString(6, customer.getCustomerPhone());
+            preparedStatement.setString(7, customer.getCustomerMail());
+            preparedStatement.setString(8, customer.getCustomerAddress());
+            preparedStatement.setInt(9, customer.getCustomerTypeId());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -89,6 +86,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             if (rs.next()) {
                 Customer customer = new Customer();
                 customer.setCustomerId(rs.getInt("customer_id"));
+                customer.setCustomerCode(rs.getString("customer_code"));
                 customer.setCustomerName(rs.getString("customer_name"));
                 customer.setCustomerDob(rs.getString("date_of_birth"));
                 customer.setCustomerGender(rs.getInt("gender"));
@@ -110,15 +108,16 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CUSTOMER_SQL)) {
 // select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from customer
-            preparedStatement.setString(1, customer.getCustomerName());
-            preparedStatement.setDate(2, Date.valueOf(customer.getCustomerDob()));
-            preparedStatement.setInt(3, customer.getCustomerGender());
-            preparedStatement.setString(4, customer.getCustomerIdCard());
-            preparedStatement.setString(5, customer.getCustomerPhone());
-            preparedStatement.setString(6, customer.getCustomerMail());
-            preparedStatement.setString(7, customer.getCustomerAddress());
-            preparedStatement.setInt(8, customer.getCustomerTypeId());
-            preparedStatement.setInt(9, customer.getCustomerId());
+            preparedStatement.setString(1, customer.getCustomerCode());
+            preparedStatement.setString(2, customer.getCustomerName());
+            preparedStatement.setDate(3, Date.valueOf(customer.getCustomerDob()));
+            preparedStatement.setInt(4, customer.getCustomerGender());
+            preparedStatement.setString(5, customer.getCustomerIdCard());
+            preparedStatement.setString(6, customer.getCustomerPhone());
+            preparedStatement.setString(7, customer.getCustomerMail());
+            preparedStatement.setString(8, customer.getCustomerAddress());
+            preparedStatement.setInt(9, customer.getCustomerTypeId());
+            preparedStatement.setInt(10, customer.getCustomerId());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -170,6 +169,7 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             while (rs.next()) {
                 customer = new Customer();
                 customer.setCustomerId(rs.getInt("customer_id"));
+                customer.setCustomerCode(rs.getString("customer_code"));
                 customer.setCustomerName(rs.getString("customer_name"));
                 customer.setCustomerDob(rs.getString("date_of_birth"));
                 customer.setCustomerGender(rs.getInt("gender"));

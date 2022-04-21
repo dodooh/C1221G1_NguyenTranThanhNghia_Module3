@@ -41,6 +41,16 @@
                         <h4 class="col-sm-9 control-label px-0 mx-0">Edit ${title}</h4>
                     </div>
                 </div>
+                    <div class="form-group row">
+                        <label for="customer_code"
+                               class="col-sm-3 col-form-label text-right">Customer Code</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="customer_code"
+                                   name="customer_code"
+                                   value="${customer.customerCode}">
+                            <small class="text-danger">${errors.get("customer_code")}</small>
+                        </div>
+                    </div>
                 <div class="form-group row">
                     <label for="customer_name"
                            class="col-sm-3 col-form-label text-right">Name</label>
@@ -48,8 +58,6 @@
                         <input type="text" class="form-control" id="customer_name"
                                name="customer_name"
                                value="${customer.customerName}">
-                        <%--                        <small id="emailHelp" class="form-text text-muted">We'll never share your email--%>
-                        <%--                            with anyone else.</small>--%>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -59,6 +67,7 @@
                         <input type="date" class="form-control" id="date_of_birth"
                                name="date_of_birth"
                                value="${customer.customerDob}">
+                        <small class="text-danger">${errors.get("date_of_birth")}</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -94,6 +103,7 @@
                         <input type="text" class="form-control" id="nation_id"
                                name="identify_number"
                                value="${customer.customerIdCard}">
+                        <small class="text-danger">${errors.get("identify_number")}</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -103,6 +113,7 @@
                         <input type="text" class="form-control" id="phone_number"
                                name="phone_number"
                                value="${customer.customerPhone}">
+                        <small class="text-danger">${errors.get("phone_number")}</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -112,6 +123,7 @@
                         <input type="email" class="form-control" id="email"
                                name="email"
                                value="${customer.customerMail}">
+                        <small class="text-danger">${errors.get("email")}</small>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -142,6 +154,7 @@
                                 </c:choose>
                             </c:forEach>
                         </select>
+                        <small class="text-danger">${errors.get("customer_type_id")}</small>
                     </div>
                 </div>
                 <div class="form-group row">

@@ -3,6 +3,7 @@ package model;
 public class Customer {
 
     private Integer customerId;
+    private String customerCode;
     private String customerName;
     private String customerDob;
     private Integer customerGender;
@@ -15,9 +16,10 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Integer customerId, String customerName, String customerDob, Integer customerGender, String customerIdCard,
-        String customerPhone, String customerMail, String customerAddress, Integer customerTypeId) {
+    public Customer(Integer customerId, String customerCode, String customerName, String customerDob, Integer customerGender,
+        String customerIdCard, String customerPhone, String customerMail, String customerAddress, Integer customerTypeId) {
         this.customerId = customerId;
+        this.customerCode = customerCode;
         this.customerName = customerName;
         this.customerDob = customerDob;
         this.customerGender = customerGender;
@@ -26,6 +28,14 @@ public class Customer {
         this.customerMail = customerMail;
         this.customerAddress = customerAddress;
         this.customerTypeId = customerTypeId;
+    }
+
+    public String getCustomerCode() {
+        return customerCode;
+    }
+
+    public void setCustomerCode(String customerCode) {
+        this.customerCode = customerCode;
     }
 
     public Integer getCustomerId() {
@@ -106,6 +116,7 @@ public class Customer {
     public String toString() {
         return "Customer{" +
             "customerId=" + customerId +
+            ", customerCode='" + customerCode + '\'' +
             ", customerName='" + customerName + '\'' +
             ", customerDob='" + customerDob + '\'' +
             ", customerGender=" + customerGender +

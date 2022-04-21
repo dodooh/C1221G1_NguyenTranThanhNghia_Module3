@@ -1,37 +1,74 @@
 package repository.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import model.Employee;
 import model.ServiceData;
 import repository.IServiceDataRepository;
 
 public class ServiceDataRepositoryImpl implements IServiceDataRepository {
-    private BaseRepository baseRepository = BaseRepository.getInstance();
+    private final BaseRepository baseRepository = BaseRepository.getInstance();
+    private static final String SELECT_ALL_SERVICE_DATA_SQL = "select service_id, service_name, area, price, max_people_allowed, room_standard, convenient_describe, pool_area, floors, rent_type_id, service_type_id from furama_resort.service;";
+    private static final String INSERT_SERVICE_DATA_SQL = "insert into furama_resort.service (service_name, area, price, max_people_allowed, room_standard, convenient_describe, pool_area, floors, rent_type_id, service_type_id) values (?,?,?,?,?,?,?,?,?,?) ;";
 
     @Override
     public List<ServiceData> selectAll() {
-        return null;
+        List<ServiceData> serviceDataList = new ArrayList<>();
+        try (Connection connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_SERVICE_DATA_SQL);) {
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+            ServiceData serviceData = null;
+            while (rs.next()) {
+                serviceData = new ServiceData();
+//"select service_id, service_name, area, price, max_people_allowed, room_standard, convenient_describe, pool_area, floors, rent_type_id, service_type_id from furama_resort.service;";
+                serviceData.setServiceId(rs.getInt("service_id"));
+                serviceData.setServiceName(rs.getString("service_name"));
+                serviceData.setArea(rs.getInt("area"));
+                serviceData.setPrice(rs.getDouble("price"));
+                serviceData.setMaxPeopleAllowed(rs.getInt("max_people_allowed"));
+                serviceData.setStandardRoom(rs.getString("room_standard"));
+                serviceData.setConvenientDescribe(rs.getString("convenient_describe"));
+                serviceData.setPoolArea(rs.getDouble("pool_area"));
+                serviceData.setNumFloors(rs.getInt("floors"));
+                serviceData.setRentTypeId(rs.getInt("rent_type_id"));
+                serviceData.setServiceTypeId(rs.getInt("service_type_id"));
+                serviceDataList.add(serviceData);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return serviceDataList;
     }
 
     @Override
     public void insertOne(ServiceData serviceData) {
-
+        System.out.println(serviceData);
+        try (Connection connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SERVICE_DATA_SQL);) {
+            preparedStatement.setString(1, serviceData.getServiceName());
+            preparedStatement.setInt(2, serviceData.getArea());
+            preparedStatement.setDouble(3, serviceData.getPrice());
+            preparedStatement.setInt(4, serviceData.getMaxPeopleAllowed());
+            preparedStatement.setString(5, serviceData.getStandardRoom());
+            preparedStatement.setString(6, serviceData.getConvenientDescribe());
+            preparedStatement.setDouble(7, serviceData.getPoolArea());
+            preparedStatement.setInt(8, serviceData.getNumFloors());
+            preparedStatement.setInt(9, serviceData.getRentTypeId());
+            preparedStatement.setInt(10, serviceData.getServiceTypeId());
+            System.out.println(preparedStatement);
+            boolean result = preparedStatement.execute();
+            System.out.println(result);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    @Override
-    public ServiceData findById(int id) {
-        return null;
-    }
 
-    @Override
-    public void updateOne(ServiceData serviceData) {
-
-    }
-
-    @Override
-    public void deleteOne(Integer id) {
-
-    }
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

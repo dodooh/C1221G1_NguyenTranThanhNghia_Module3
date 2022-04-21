@@ -1,7 +1,7 @@
 package controller;
 
-import java.net.URL;
 import java.util.Arrays;
+import java.util.Map;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -80,17 +80,33 @@ public class CustomerServlet extends HttpServlet {
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response) {
         Integer id = Integer.parseInt(request.getParameter("id"));
         String customerName = request.getParameter("customer_name");
+        String customerCode = request.getParameter("customer_code");
         String customerDob = request.getParameter("date_of_birth");
-        Integer customerGender = Integer.parseInt(request.getParameter("gender")) == 1 ? 1 : 0;
+        System.out.println(customerDob);
+        Integer customerGender = 0;
+        try {
+            customerGender = Integer.parseInt(request.getParameter("gender"));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
         String customerIdCard = request.getParameter("identify_number");
         String customerPhone = request.getParameter("phone_number");
         String customerMail = request.getParameter("email");
         String customerAddress = request.getParameter("address");
-        Integer customerTypeId = Integer.valueOf(request.getParameter("customer_type_id"));
-        Customer customer = new Customer(id, customerName, customerDob, customerGender, customerIdCard, customerPhone, customerMail,
+        Integer customerTypeId = null;
+        try {
+            customerTypeId = Integer.parseInt(request.getParameter("customer_type_id"));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        Customer customer = new Customer(id, customerCode, customerName, customerDob, customerGender, customerIdCard, customerPhone, customerMail,
             customerAddress, customerTypeId);
-        iCustomerService.updateOne(customer);
-        request.setAttribute("message", "Success");
+        Map<String, String> errors = iCustomerService.updateOne(customer);
+        if (errors.isEmpty()) {
+            request.setAttribute("message", "Success");
+        } else {
+            request.setAttribute("errors", errors);
+        }
         try {
             request.setAttribute("customer", customer);
             request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
@@ -103,24 +119,38 @@ public class CustomerServlet extends HttpServlet {
 
     private void createCustomer(HttpServletRequest request, HttpServletResponse response) {
 //          customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id --%>
-
         String customerName = request.getParameter("customer_name");
+        String customerCode = request.getParameter("customer_code");
         String customerDob = request.getParameter("date_of_birth");
-        Integer customerGender = Integer.parseInt(request.getParameter("gender")) == 1 ? 1 : 0;
+        System.out.println(customerDob);
+        Integer customerGender = 0;
+        try {
+            customerGender = Integer.parseInt(request.getParameter("gender"));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
         String customerIdCard = request.getParameter("identify_number");
         String customerPhone = request.getParameter("phone_number");
         String customerMail = request.getParameter("email");
         String customerAddress = request.getParameter("address");
-        Integer customerTypeId = Integer.valueOf(request.getParameter("customer_type_id"));
-        Customer customer = new Customer(null, customerName, customerDob, customerGender, customerIdCard, customerPhone, customerMail,
+        Integer customerTypeId = null;
+        try {
+            customerTypeId = Integer.parseInt(request.getParameter("customer_type_id"));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        Customer customer = new Customer(null, customerCode, customerName, customerDob, customerGender, customerIdCard, customerPhone, customerMail,
             customerAddress, customerTypeId);
         System.out.println(customer);
-        iCustomerService.insertOne(customer);
-
-        request.setAttribute("message", "Success");
-        try {
-
+        Map<String, String> errors = iCustomerService.insertOne(customer);
+        if (errors.isEmpty()) {
+            request.setAttribute("message", "Success");
+        } else {
+            request.setAttribute("errors", errors);
             request.setAttribute("customer", customer);
+        }
+        try {
+            request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
             request.getRequestDispatcher(ROOT_PATH + "create.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -131,8 +161,6 @@ public class CustomerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("urlPath", URL_PATH);
         request.setAttribute("title", TITLE);
-        String url = String.valueOf(request.getRequestURL());
-        System.out.println("GET" + url.substring(url.lastIndexOf("/") + 1));
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -169,8 +197,6 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("urlPath", URL_PATH);
-        request.setAttribute("title", TITLE);
         int id = Integer.parseInt(request.getParameter("id"));
         Customer customer = iCustomerService.findById(id);
         try {
