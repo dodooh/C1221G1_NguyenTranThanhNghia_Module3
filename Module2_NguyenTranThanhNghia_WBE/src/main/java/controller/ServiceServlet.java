@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +46,7 @@ public class ServiceServlet extends HttpServlet {
 
     private void createService(HttpServletRequest request, HttpServletResponse response) {
         Integer serviceId = null;
+        String serviceCode = request.getParameter("service_code");
         String serviceName = request.getParameter("service_name");
         Integer area = null;
         try {
@@ -90,11 +92,17 @@ public class ServiceServlet extends HttpServlet {
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        ServiceData serviceData = new ServiceData(serviceId, serviceName, area, price, maxPeopleAllowed, standardRoom,
+        ServiceData serviceData = new ServiceData(serviceId,serviceCode, serviceName, area, price, maxPeopleAllowed, standardRoom,
             convenientDescribe, poolArea, numFloors, rentTypeId, serviceTypeId);
-        iServiceDataService.insertOne(serviceData);
-
-        request.setAttribute("message", "Success");
+        System.out.println(serviceData);
+        Map<String, String> error =  iServiceDataService.insertOne(serviceData);
+        if (error.isEmpty()) {
+            request.setAttribute("message", "Success");
+        } else {
+            request.setAttribute("message", "Error");
+            request.setAttribute("serviceData", serviceData);
+            request.setAttribute("errors", error);
+        }
         try {
             request.setAttribute("serviceTypes", iServiceTypeService.selectAllServiceType());
             request.setAttribute("rentTypes", iRentTypeService.selectAllRentType());

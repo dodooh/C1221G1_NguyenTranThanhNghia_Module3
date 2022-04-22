@@ -81,7 +81,7 @@ CREATE TABLE service_type
 CREATE TABLE service
 (
     service_id          int AUTO_INCREMENT,
-#     service_code        varchar(45) NOT NULL,
+    service_code        varchar(45) NOT NULL,
     service_name        varchar(45) NOT NULL,
     area                int,
     price               double      NOT NULL,
@@ -138,16 +138,16 @@ CREATE TABLE account
     username varchar(20),
     password varchar(20) NOT NULL,
     role     int         not null,
-    name varchar(30) not null,
+    name     varchar(30) not null,
     primary key (username)
 );
 
 
 INSERT INTO account (username, password, role, name)
 values ('admin', 'admin', 1, 'ADMIN'),
-       ('user1', '123', 2,'Nghia Khach'),
-       ('user2', '123', 3,'An Khach'),
-       ('user3', '123', 3,'Hoang Khach');
+       ('user1', '123', 2, 'Nghia Khach'),
+       ('user2', '123', 3, 'An Khach'),
+       ('user3', '123', 3, 'Hoang Khach');
 
 
 INSERT INTO furama_resort.`position`(position_name)
@@ -241,15 +241,18 @@ VALUES ('Villa'),
        ('House'),
        ('Room');
 
-INSERT INTO furama_resort.service (service_name, area, price, max_people_allowed, room_standard,
+INSERT INTO furama_resort.service (service_code, service_name, area, price, max_people_allowed,
+                                   room_standard,
                                    convenient_describe, pool_area, floors,
                                    rent_type_id, service_type_id)
-VALUES ('Villa Beach Front', 25000, 10000000, 10, 'vip', 'Có hồ bơi', 500, 4, 3, 1),
-       ('House Princess 01', 14000, 5000000, 7, 'vip', 'Có thêm bếp nướng', NULL, 3, 2, 2),
-       ('Room Twin 01', 5000, 1000000, 2, 'normal', 'Có tivi', NULL, NULL, 4, 3),
-       ('Villa No Beach Front', 22000, 9000000, 8, 'normal', 'Có hồ bơi', 300, 3, 3, 1),
-       ('House Princess 02', 10000, 4000000, 5, 'normal', 'Có thêm bếp nướng', NULL, 2, 3, 2),
-       ('Room Twin 02', 3000, 900000, 2, 'normal', 'Có tivi', NULL, NULL, 4, 3);
+VALUES ('DV-2123', 'Villa Beach Front', 25000, 10000000, 10, 'vip', 'Có hồ bơi', 500, 4, 3, 1),
+       ('DV-2123', 'House Princess 01', 14000, 5000000, 7, 'vip', 'Có thêm bếp nướng', NULL, 3, 2,
+        2),
+       ('DV-2123', 'Room Twin 01', 5000, 1000000, 2, 'normal', 'Có tivi', NULL, NULL, 4, 3),
+       ('DV-2123', 'Villa No Beach Front', 22000, 9000000, 8, 'normal', 'Có hồ bơi', 300, 3, 3, 1),
+       ('DV-2123', 'House Princess 02', 10000, 4000000, 5, 'normal', 'Có thêm bếp nướng', NULL, 2,
+        3, 2),
+       ('DV-2123', 'Room Twin 02', 3000, 900000, 2, 'normal', 'Có tivi', NULL, NULL, 4, 3);
 
 INSERT INTO furama_resort.accompanied_service (accompanied_service_name, price, unit, status)
 VALUES ('Karaoke', 10000, 'giờ', 'tiện nghi, hiện tại'),

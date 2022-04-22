@@ -27,6 +27,7 @@ public class CustomerServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         request.setAttribute("urlPath", URL_PATH);
         request.setAttribute("title", TITLE);
+        request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -109,7 +110,6 @@ public class CustomerServlet extends HttpServlet {
         }
         try {
             request.setAttribute("customer", customer);
-            request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
             request.getRequestDispatcher(ROOT_PATH + "edit.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -150,7 +150,6 @@ public class CustomerServlet extends HttpServlet {
             request.setAttribute("customer", customer);
         }
         try {
-            request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
             request.getRequestDispatcher(ROOT_PATH + "create.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();
@@ -161,6 +160,7 @@ public class CustomerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("urlPath", URL_PATH);
         request.setAttribute("title", TITLE);
+        request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -183,12 +183,11 @@ public class CustomerServlet extends HttpServlet {
     private void searchUser(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("nameSearch");
         String phone = request.getParameter("phoneSearch");
-        String mail = request.getParameter("mailSearch");
+        String customerType = request.getParameter("customerTypeSearch");
         name = name == null ? "" : name;
         phone = phone == null ? "" : phone;
-        mail = mail == null ? "" : mail;
-        request.setAttribute("customers", iCustomerService.search(name, phone, mail));
-        request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
+        customerType = customerType == null ? "" : customerType;
+        request.setAttribute("customers", iCustomerService.search(name, phone, customerType));
         try {
             request.getRequestDispatcher(ROOT_PATH + "list.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
@@ -203,7 +202,6 @@ public class CustomerServlet extends HttpServlet {
             if (customer == null) {
                 response.sendRedirect("/view/error-404.jsp");
             } else {
-                request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
                 request.setAttribute("customer", customer);
                 request.getRequestDispatcher(ROOT_PATH + "edit.jsp").forward(request, response);
             }
@@ -213,7 +211,6 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
         try {
             request.getRequestDispatcher(ROOT_PATH + "create.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
@@ -223,7 +220,6 @@ public class CustomerServlet extends HttpServlet {
 
     private void showListCustomers(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("customers", iCustomerService.selectAllCustomer());
-        request.setAttribute("customerTypes", iCustomerTypeService.selectAllCustomerType());
         try {
             request.getRequestDispatcher(ROOT_PATH + "list.jsp").forward(request, response);
         } catch (ServletException | IOException e) {

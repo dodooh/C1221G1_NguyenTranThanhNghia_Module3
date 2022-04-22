@@ -12,8 +12,8 @@ import repository.IServiceDataRepository;
 
 public class ServiceDataRepositoryImpl implements IServiceDataRepository {
     private final BaseRepository baseRepository = BaseRepository.getInstance();
-    private static final String SELECT_ALL_SERVICE_DATA_SQL = "select service_id, service_name, area, price, max_people_allowed, room_standard, convenient_describe, pool_area, floors, rent_type_id, service_type_id from furama_resort.service;";
-    private static final String INSERT_SERVICE_DATA_SQL = "insert into furama_resort.service (service_name, area, price, max_people_allowed, room_standard, convenient_describe, pool_area, floors, rent_type_id, service_type_id) values (?,?,?,?,?,?,?,?,?,?) ;";
+    private static final String SELECT_ALL_SERVICE_DATA_SQL = "select service_id,service_code, service_name, area, price, max_people_allowed, room_standard, convenient_describe, pool_area, floors, rent_type_id, service_type_id from furama_resort.service;";
+    private static final String INSERT_SERVICE_DATA_SQL = "insert into furama_resort.service (service_code,service_name, area, price, max_people_allowed, room_standard, convenient_describe, pool_area, floors, rent_type_id, service_type_id) values (?,?,?,?,?,?,?,?,?,?,?) ;";
 
     @Override
     public List<ServiceData> selectAll() {
@@ -27,6 +27,7 @@ public class ServiceDataRepositoryImpl implements IServiceDataRepository {
                 serviceData = new ServiceData();
 //"select service_id, service_name, area, price, max_people_allowed, room_standard, convenient_describe, pool_area, floors, rent_type_id, service_type_id from furama_resort.service;";
                 serviceData.setServiceId(rs.getInt("service_id"));
+                serviceData.setServiceCode(rs.getString("service_code"));
                 serviceData.setServiceName(rs.getString("service_name"));
                 serviceData.setArea(rs.getInt("area"));
                 serviceData.setPrice(rs.getDouble("price"));
@@ -50,16 +51,18 @@ public class ServiceDataRepositoryImpl implements IServiceDataRepository {
         System.out.println(serviceData);
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SERVICE_DATA_SQL);) {
-            preparedStatement.setString(1, serviceData.getServiceName());
-            preparedStatement.setInt(2, serviceData.getArea());
-            preparedStatement.setDouble(3, serviceData.getPrice());
-            preparedStatement.setInt(4, serviceData.getMaxPeopleAllowed());
-            preparedStatement.setString(5, serviceData.getStandardRoom());
-            preparedStatement.setString(6, serviceData.getConvenientDescribe());
-            preparedStatement.setDouble(7, serviceData.getPoolArea());
-            preparedStatement.setInt(8, serviceData.getNumFloors());
-            preparedStatement.setInt(9, serviceData.getRentTypeId());
-            preparedStatement.setInt(10, serviceData.getServiceTypeId());
+
+            preparedStatement.setString(1, serviceData.getServiceCode());
+            preparedStatement.setString(2, serviceData.getServiceName());
+            preparedStatement.setInt(3, serviceData.getArea());
+            preparedStatement.setDouble(4, serviceData.getPrice());
+            preparedStatement.setInt(5, serviceData.getMaxPeopleAllowed());
+            preparedStatement.setString(6, serviceData.getStandardRoom());
+            preparedStatement.setString(7, serviceData.getConvenientDescribe());
+            preparedStatement.setDouble(8, serviceData.getPoolArea());
+            preparedStatement.setInt(9, serviceData.getNumFloors());
+            preparedStatement.setInt(10, serviceData.getRentTypeId());
+            preparedStatement.setInt(11, serviceData.getServiceTypeId());
             System.out.println(preparedStatement);
             boolean result = preparedStatement.execute();
             System.out.println(result);

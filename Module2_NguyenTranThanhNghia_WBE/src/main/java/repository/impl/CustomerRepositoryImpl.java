@@ -12,6 +12,7 @@ import repository.ICustomerRepository;
 
 public class CustomerRepositoryImpl implements ICustomerRepository {
 
+    private static final String SEARCH_CUSTOMER_ADDITION_SQL =     "select customer_code, customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer where customer_name LIKE ? and phone_number LIKE ? and CAST(customer_type_id as CHAR) LIKE ?";
     private static final String SELECT_ALL_CUSTOMERS_SQL = "select customer_id, customer_code, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer";
     private static final String FIND_CUSTOMER_BY_ID_SQL = "select customer_id,customer_code, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from furama_resort.customer where customer_id = ?";
     private static final String UPDATE_CUSTOMER_SQL = "update furama_resort.customer set customer_code = ?, customer_name = ?, date_of_birth = ?, gender = ?, identify_number = ?, phone_number = ?, email = ?, address = ?, customer_type_id = ? where customer_id = ?";
@@ -156,13 +157,13 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
     }
 
     @Override
-    public List<Customer> search(String keyword, String phone, String mail) {
+    public List<Customer> search(String keyword, String phone, String customerType) {
         List<Customer> customerList = new ArrayList<>();
         try (Connection connection = baseRepository.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_CUSTOMERS_SQL);) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_CUSTOMER_ADDITION_SQL);) {
             preparedStatement.setString(1, "%" + keyword + "%");
             preparedStatement.setString(2, "%" + phone + "%");
-            preparedStatement.setString(3, "%" + mail + "%");
+            preparedStatement.setString(3, customerType);
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             Customer customer = null;

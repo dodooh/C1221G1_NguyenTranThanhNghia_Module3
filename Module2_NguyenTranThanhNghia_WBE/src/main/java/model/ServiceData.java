@@ -2,7 +2,7 @@ package model;
 
 public class ServiceData {
     private Integer serviceId;
-//    private String serviceCode;
+    private String serviceCode;
     private String serviceName;
     private Integer area;
     private Double price;
@@ -14,10 +14,10 @@ public class ServiceData {
     private Integer rentTypeId;
     private Integer serviceTypeId;
 
-    public ServiceData(Integer serviceId/*, String serviceCode*/, String serviceName, Integer area, Double price, Integer maxPeopleAllowed,
+    public ServiceData(Integer serviceId, String serviceCode, String serviceName, Integer area, Double price, Integer maxPeopleAllowed,
         String standardRoom, String convenientDescribe, Double poolArea, Integer numFloors, Integer rentTypeId, Integer serviceTypeId) {
         this.serviceId = serviceId;
-//        this.serviceCode = serviceCode;
+        this.serviceCode = serviceCode;
         this.serviceName = serviceName;
         this.area = area;
         this.price = price;
@@ -33,13 +33,13 @@ public class ServiceData {
     public ServiceData() {
     }
 
-//    public String getServiceCode() {
-//        return serviceCode;
-//    }
-//
-//    public void setServiceCode(String serviceCode) {
-//        this.serviceCode = serviceCode;
-//    }
+    public String getServiceCode() {
+        return serviceCode;
+    }
+
+    public void setServiceCode(String serviceCode) {
+        this.serviceCode = serviceCode;
+    }
 
     public Integer getServiceId() {
         return serviceId;
@@ -133,6 +133,7 @@ public class ServiceData {
     public String toString() {
         return "ServiceData{" +
             "serviceId=" + serviceId +
+            ", serviceCode='" + serviceCode + '\'' +
             ", serviceName='" + serviceName + '\'' +
             ", area=" + area +
             ", price=" + price +

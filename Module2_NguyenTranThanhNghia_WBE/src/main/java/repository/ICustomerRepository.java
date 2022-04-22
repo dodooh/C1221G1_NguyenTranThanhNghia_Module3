@@ -5,5 +5,5 @@ import model.Customer;
 
 public interface ICustomerRepository extends ICRUDRepository<Customer> {
 
-    List<Customer> search(String keyword, String phone, String mail);
+    List<Customer> search(String keyword, String phone, String customerType);
 }

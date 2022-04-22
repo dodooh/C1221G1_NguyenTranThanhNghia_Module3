@@ -109,7 +109,7 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public List<Customer> search(String keyword, String phone, String mail) {
-        return iCustomerRepository.search(keyword, phone, mail);
+    public List<Customer> search(String keyword, String phone, String customerType) {
+        return iCustomerRepository.search(keyword, phone, customerType);
     }
 }

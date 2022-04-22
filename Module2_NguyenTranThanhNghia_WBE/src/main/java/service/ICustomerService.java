@@ -16,5 +16,5 @@ public interface ICustomerService {
 
     void deleteCustomer(Integer id);
 
-    List<Customer> search(String keyword, String phone, String mail);
+    List<Customer> search(String keyword, String phone, String customerType);
 }

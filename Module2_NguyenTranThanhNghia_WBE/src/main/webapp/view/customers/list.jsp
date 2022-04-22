@@ -28,7 +28,7 @@
 
 <body class="text-light">
 <c:import url="../../components/header.jsp"/> <%--Header--%>
-<c:import url="../../components/navbar_entity.jsp">
+<c:import url="../../components/navbar_customer.jsp">
 </c:import> <%--Navbar--%>
 <div class="container-fluid px-0 bg-dark"
      style="margin-top: 144px; min-height: calc(100vh - 144px - 50px);">

@@ -18,6 +18,7 @@
             <table id="tableCustomer" class="table table-bordered table-dark">
                 <thead class="thead-light">
                 <th scope="col">#</th>
+                <th scope="col">CODE</th>
                 <th scope="col">Name</th>
                 <th scope="col">Area</th>
                 <th scope="col">Price</th>
@@ -33,6 +34,7 @@
                 <c:forEach var="serviceData" items="${serviceDatas}" varStatus="loop">
                     <tr>
                         <td>${loop.count}</td>
+                        <td>${serviceData.getServiceCode()}</td>
                         <td>${serviceData.getServiceName()}</td>
                         <td>${serviceData.getArea()}</td>
                         <td>

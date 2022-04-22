@@ -23,6 +23,16 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="service_code"
+                           class="col-sm-3 col-form-label text-right">Code</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="service_code"
+                               name="service_code">
+                        <small class="text-danger">${errors.get("service_code")}</small>
+
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="service_name"
                            class="col-sm-3 col-form-label text-right">Name</label>
                     <div class="col-sm-5">
@@ -36,6 +46,8 @@
                     <div class="col-sm-3">
                         <input type="number" class="form-control" id="area"
                                name="area">
+                        <small class="text-danger">${errors.get("area")}</small>
+
                     </div>
                 </div>
                 <div class="form-group row">
@@ -44,6 +56,8 @@
                     <div class="col-sm-3">
                         <input type="number" step="0.01" class="form-control" id="price"
                                name="price">
+                        <small class="text-danger">${errors.get("price")}</small>
+
                     </div>
                 </div>
                 <div class="form-group row">
@@ -52,6 +66,8 @@
                     <div class="col-sm-3">
                         <input type="number" class="form-control" id="people_allowed"
                                name="people_allowed">
+                        <small class="text-danger">${errors.get("people_allowed")}</small>
+
                     </div>
                 </div>
 
@@ -74,14 +90,19 @@
                     <div class="col-sm-9">
                         <select name="service_type_id" class="form-select"
                                 aria-label="Default select example" id="service_type_id">
-                            <option selected>Choose Service Type</option>
                             <c:forEach items="${serviceTypes}" var="serviceType">
-                                <option value="${serviceType.serviceTypeId}">${serviceType.serviceTypeName}</option>
+                                <c:if test="${serviceType.serviceTypeId == 1}">
+                                    <option value="${serviceType.serviceTypeId}"
+                                            selected>${serviceType.serviceTypeName}</option>
+                                </c:if>
+                                <c:if test="${serviceType.serviceTypeId != 1}">
+                                    <option value="${serviceType.serviceTypeId}">${serviceType.serviceTypeName}</option>
+                                </c:if>
                             </c:forEach>
                         </select>
                     </div>
                 </div>
-                <div id="villa_facility" style="display: none">
+                <div id="villa_facility" style="display: block">
                     <div class="form-group row">
                         <label for="standard_room"
                                class="col-sm-3 col-form-label text-right">Standard Room</label>
@@ -162,22 +183,41 @@
         src="${pageContext.request.contextPath}/WEB-INF/js/jquery-3.6.0.min.js"></script>
 </body>
 <script>
-    $(document).ready(function() {
-        $('#service_type_id').change(function() {
-          if (this.value == 1) {
-            $('#villa_facility').css({"display": "block"});
-            $('#house_facility').css({"display": "none"});
-            $('#room_facility').css({"display": "none"});
-          } else if (this.value == 2) {
-            $('#villa_facility').css({"display": "none"});
-            $('#house_facility').css({"display": "block"});
-            $('#room_facility').css({"display": "none"});
-          } else {
-            $('#villa_facility').css({"display": "none"});
-            $('#house_facility').css({"display": "none"});
-            $('#room_facility').css({"display": "block"});
-          }
+  $(document).ready(function () {
+    $('#service_type_id').change(function () {
+      if (this.value == 1) {
+        $('#villa_facility').css({"display": "block"});
+        $('#house_facility').css({"display": "none"});
+        $('#room_facility').css({"display": "none"});
+        $('#house_facility').find("input").each(function () {
+          $(this).val('');
         })
+        $('#room_facility').find("input").each(function() {
+          $(this).val('');
+        })
+
+      } else if (this.value == 2) {
+        $('#villa_facility').css({"display": "none"});
+        $('#house_facility').css({"display": "block"});
+        $('#room_facility').css({"display": "none"});
+        $('#villa_facility').find("input").each(function() {
+          $(this).val('');
+        })
+        $('#room_facility').find("input").each(function() {
+          $(this).val('');
+        })
+      } else {
+        $("#villa_facility").css({"display": "none"});
+        $('#house_facility').css({"display": "none"});
+        $('#room_facility').css({"display": "block"});
+        $('#villa_facility').find("input").each(function() {
+          $(this).val('');
+        })
+        $('#house_facility').find("input").each(function() {
+          $(this).val('');
+        })
+      }
     })
+  })
 </script>
 </html>
