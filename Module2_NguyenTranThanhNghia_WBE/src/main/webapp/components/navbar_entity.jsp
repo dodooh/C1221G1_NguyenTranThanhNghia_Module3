@@ -38,7 +38,8 @@
         <form class="form-inline my-2 my-lg-0" action="/${urlPath}" method="get">
             <input type="hidden" name="action" value="search">
             <input name="nameSearch" class="form-control mr-sm-2 bg-dark btn-outline-light" style="width: 125px;" type="search" placeholder="by Name" aria-label="Search">
-
+            <input name="startDate" class="form-control mr-sm-2 bg-dark btn-outline-light" style="width: 175px;" type="date" aria-label="Search">
+            <input name="endDate" class="form-control mr-sm-2 bg-dark btn-outline-light" style="width: 175px;" type="date" aria-label="Search">
             <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>

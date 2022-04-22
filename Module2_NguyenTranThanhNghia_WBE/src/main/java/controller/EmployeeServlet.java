@@ -191,12 +191,12 @@ public class EmployeeServlet extends HttpServlet {
 
     private void searchEmployee(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("nameSearch");
-        String phone = request.getParameter("phoneSearch");
-        String mail = request.getParameter("mailSearch");
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
         name = name == null ? "" : name;
-        phone = phone == null ? "" : phone;
-        mail = mail == null ? "" : mail;
-        request.setAttribute("employees", iEmployeeService.search(name, phone, mail));
+        startDate = startDate == null ? "" : startDate;
+        endDate = endDate == null ? "" : endDate;
+        request.setAttribute("employees", iEmployeeService.search(name, startDate, endDate));
         request.setAttribute("positions", iPositionService.selectAllPosition());
         request.setAttribute("educationDegrees", iEducationDegreeService.selectAllEducationDegree());
         request.setAttribute("departments", iDepartmentService.selectAllDepartment());

@@ -16,7 +16,7 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
     private static final String INSERT_EMPLOYEE_SQL = "INSERT INTO furama_resort.staff (staff_name, date_of_birth, identify_number, salary, phone_number, email, address, position_id, education_degree_id, department_id) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String UPDATE_EMPLOYEE_SQL = "update furama_resort.staff set staff_name = ?, date_of_birth = ?, identify_number = ?, salary = ?, phone_number = ?, email = ?, address = ?, position_id = ?, education_degree_id = ?, department_id = ? where staff_id = ?";
     private static final String DELETE_EMPLOYEE_SQL = "delete from furama_resort.staff where staff_id = ?";
-    private static final String SEARCH_EMPLOYEE_SQL = "select staff_id, staff_name, date_of_birth, identify_number, salary, phone_number, email, address, position_id, education_degree_id, department_id from staff where staff_name LIKE ? and phone_number LIKE ? and email LIKE ?";
+    private static final String SEARCH_EMPLOYEE_SQL = "select staff_id, staff_name, date_of_birth, identify_number, salary, phone_number, email, address, position_id, education_degree_id, department_id from staff where staff_name LIKE ? and date_of_birth between ? and ?";
     private BaseRepository baseRepository = BaseRepository.getInstance();
 
     @Override
@@ -144,13 +144,14 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
     }
 
     @Override
-    public List<Employee> search(String keyword, String phone, String mail) {
+    public List<Employee> search(String keyword, String startDate, String endDate) {
         List<Employee> employeeList = new ArrayList<>();
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_EMPLOYEE_SQL);) {
             preparedStatement.setString(1, "%" + keyword + "%");
-            preparedStatement.setString(2, "%" + phone + "%");
-            preparedStatement.setString(3, "%" + mail + "%");
+            preparedStatement.setString(2, startDate);
+            preparedStatement.setString(3, endDate);
+            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             Employee employee = null;
             while (rs.next()) {
