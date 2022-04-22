@@ -1,13 +1,14 @@
 package service;
 
 import java.util.List;
+import java.util.Map;
 import model.Employee;
 
 public interface IEmployeeService {
 
     List<Employee> selectAllEmployee();
 
-    void insertOne(Employee employee);
+    Map<String, String> insertOne(Employee employee);
 
     Employee findById(int id);
 

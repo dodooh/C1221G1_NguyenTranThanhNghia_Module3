@@ -26,7 +26,6 @@ public class LoginServlet extends HttpServlet {
 
     private void checkLogin(HttpServletRequest request, HttpServletResponse response, String username, String password, String remember) {
         try {
-
             boolean isValidUsn = username != null & username.trim().length() > 0;
             boolean isValidPwd = password != null & password.trim().length() > 0;
             if (isValidPwd && isValidUsn) {
@@ -64,16 +63,18 @@ public class LoginServlet extends HttpServlet {
         String password = null;
         String remember = null;
         Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            System.out.println(cookie.getName());
-            if (cookie.getName().equals("usn_ck")) {
-                username = cookie.getValue();
-            }
-            if (cookie.getName().equals("pwd_ck")) {
-                password = cookie.getValue();
-            }
-            if (cookie.getName().equals("rmb_ck")) {
-                remember = cookie.getValue();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                System.out.println(cookie.getName());
+                if (cookie.getName().equals("usn_ck")) {
+                    username = cookie.getValue();
+                }
+                if (cookie.getName().equals("pwd_ck")) {
+                    password = cookie.getValue();
+                }
+                if (cookie.getName().equals("rmb_ck")) {
+                    remember = cookie.getValue();
+                }
             }
         }
         if (username != null && password != null) {

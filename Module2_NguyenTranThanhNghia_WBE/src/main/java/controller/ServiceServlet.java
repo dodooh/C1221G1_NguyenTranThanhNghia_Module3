@@ -50,47 +50,47 @@ public class ServiceServlet extends HttpServlet {
         String serviceName = request.getParameter("service_name");
         Integer area = null;
         try {
-            area = Integer.valueOf(request.getParameter("area"));
+            area = Integer.parseInt(request.getParameter("area"));
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         Double price = null;
         try {
-            price = Double.valueOf(request.getParameter("price"));
+            price = Double.parseDouble(request.getParameter("price"));
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         Integer maxPeopleAllowed = null;
         try {
-            maxPeopleAllowed = Integer.valueOf(request.getParameter("people_allowed"));
+            maxPeopleAllowed = Integer.parseInt(request.getParameter("people_allowed"));
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         String standardRoom = request.getParameter("standard_room");
         String convenientDescribe = request.getParameter("describe");
         Double poolArea = null;
         try {
-            poolArea = Double.valueOf(request.getParameter("pool_area"));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
+            poolArea = Double.parseDouble(request.getParameter("pool_area"));
+        } catch (NumberFormatException | NullPointerException e) {
+            System.err.println(e.getMessage());
         }
         Integer numFloors = null;
         try {
-            numFloors = Integer.valueOf(request.getParameter("floors"));
+            numFloors = Integer.parseInt(request.getParameter("floors"));
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         Integer rentTypeId = null;
         try {
-            rentTypeId = Integer.valueOf(request.getParameter("rent_type_id"));
+            rentTypeId = Integer.parseInt(request.getParameter("rent_type_id"));
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         Integer serviceTypeId = null;
         try {
-            serviceTypeId = Integer.valueOf(request.getParameter("service_type_id"));
+            serviceTypeId = Integer.parseInt(request.getParameter("service_type_id"));
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         ServiceData serviceData = new ServiceData(serviceId,serviceCode, serviceName, area, price, maxPeopleAllowed, standardRoom,
             convenientDescribe, poolArea, numFloors, rentTypeId, serviceTypeId);
@@ -108,7 +108,7 @@ public class ServiceServlet extends HttpServlet {
             request.setAttribute("rentTypes", iRentTypeService.selectAllRentType());
             request.getRequestDispatcher(ROOT_PATH + "create.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 
@@ -134,9 +134,11 @@ public class ServiceServlet extends HttpServlet {
         try {
             request.getRequestDispatcher(ROOT_PATH + "create.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
+        
     }
+    
 
     private void showList(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("serviceDatas", iServiceDataService.selectAllServiceData());
@@ -145,7 +147,8 @@ public class ServiceServlet extends HttpServlet {
         try {
             request.getRequestDispatcher(ROOT_PATH + "list.jsp").forward(request, response);
         } catch (ServletException | IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
+            
         }
 
     }

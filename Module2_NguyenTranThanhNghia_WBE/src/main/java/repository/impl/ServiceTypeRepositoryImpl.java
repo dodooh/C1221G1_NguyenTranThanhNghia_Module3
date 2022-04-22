@@ -18,7 +18,6 @@ public class ServiceTypeRepositoryImpl implements IServiceTypeRepository {
         List<ServiceType> serviceTypeList = new ArrayList<>();
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_SERVICE_TYPE)) {
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             ServiceType serviceType = null;
             while (rs.next()) {

@@ -32,7 +32,6 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         // Step 1: Establishing a Connection
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMERS_SQL);) {
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             Customer customer = null;
             while (rs.next()) {
@@ -69,7 +68,6 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             preparedStatement.setString(7, customer.getCustomerMail());
             preparedStatement.setString(8, customer.getCustomerAddress());
             preparedStatement.setInt(9, customer.getCustomerTypeId());
-            System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
@@ -81,7 +79,6 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_CUSTOMER_BY_ID_SQL);) {
             preparedStatement.setInt(1, id);
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
@@ -119,7 +116,6 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             preparedStatement.setString(8, customer.getCustomerAddress());
             preparedStatement.setInt(9, customer.getCustomerTypeId());
             preparedStatement.setInt(10, customer.getCustomerId());
-            System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
@@ -132,7 +128,6 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CUSTOMER_SQL)) {
 // select customer_id, customer_name, date_of_birth, gender, identify_number, phone_number, email, address, customer_type_id from customer
             preparedStatement.setInt(1, id);
-            System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
@@ -164,7 +159,6 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             preparedStatement.setString(1, "%" + keyword + "%");
             preparedStatement.setString(2, "%" + phone + "%");
             preparedStatement.setString(3, customerType);
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             Customer customer = null;
             while (rs.next()) {

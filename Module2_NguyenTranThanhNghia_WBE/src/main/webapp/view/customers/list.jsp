@@ -2,29 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Customer | List</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
-          crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-            crossorigin="anonymous"></script>
-
-    <style>
-        <%@include file="/WEB-INF/css/style.css" %>
-    </style>
-</head>
+<c:import url="../../components/head.jsp"/> <%--Header--%>
 
 <body class="text-light">
 <c:import url="../../components/header.jsp"/> <%--Header--%>
@@ -41,18 +19,18 @@
             <div class="container-fluid mt-5 px-1">
                 <table id="tableCustomer" class="table table-bordered table-dark">
                     <thead class="thead-light">
-                    <th><input type="checkbox" id="checkboxAll"></th>
-                    <th scope="col">#</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">DOB</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">National ID</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Function</th>
+                        <th><input type="checkbox" id="checkboxAll"></th>
+                        <th scope="col">#</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">National ID</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Function</th>
                     </thead>
                     <tbody>
                     <c:forEach var="customer" items="${customers}" varStatus="loop">
@@ -77,8 +55,9 @@
 
                             <td style="white-space: nowrap;">
                                 <a role="button" class="btn btn-warning"
-                                   href="/customers?action=edit&id=${customer.getCustomerId()}"><i
-                                        class="bi bi-tools"></i></a>
+                                   href="/customers?action=edit&id=${customer.getCustomerId()}">
+                                    <img class="text-light" src="../../css/wrench.svg" alt="EDIT">
+                                </a>
                                 |
                                 <button type="button" class="btn btn-danger"
                                         data-toggle="modal" data-target="#exampleModalCenter"
@@ -89,7 +68,7 @@
                                             <c:out value='\"${customer.getCustomerGender() == 1 ? "Male" : "Female"}\"'/>
                                                 )"
                                 >
-                                    <i class="bi bi-trash3"></i>
+                                    <img class="text-light" src="../../css/trash3.svg" alt="DEL">
                                 </button>
 
                             </td>

@@ -24,7 +24,6 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
         List<Employee> employeeList = new ArrayList<>();
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_EMPLOYEES_SQL);) {
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             Employee employee = null;
             while (rs.next()) {
@@ -50,7 +49,6 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
 
     @Override
     public void insertOne(Employee employee) {
-        System.out.println(employee);
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_EMPLOYEE_SQL);) {
             preparedStatement.setString(1, employee.getEmployeeName());
@@ -63,9 +61,7 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
             preparedStatement.setInt(8, employee.getEmployeePositionId());
             preparedStatement.setInt(9, employee.getEmployeeEducationDegreeId());
             preparedStatement.setInt(10, employee.getEmployeeDivisionId());
-            System.out.println(preparedStatement);
             boolean result = preparedStatement.execute();
-            System.out.println(result);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,7 +72,6 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_EMPLOYEE_BY_ID_SQL);) {
             preparedStatement.setInt(1, id);
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
@@ -118,7 +113,6 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
 
     @Override
     public void updateOne(Employee employee) {
-        System.out.println("update repo" + employee);
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_EMPLOYEE_SQL);) {
             preparedStatement.setString(1, employee.getEmployeeName());
@@ -132,9 +126,7 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
             preparedStatement.setInt(9, employee.getEmployeeEducationDegreeId());
             preparedStatement.setInt(10, employee.getEmployeeDivisionId());
             preparedStatement.setInt(11, employee.getEmployeeId());
-            System.out.println(preparedStatement);
             boolean result = preparedStatement.execute();
-            System.out.println(result);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -145,7 +137,6 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_EMPLOYEE_SQL)) {
             preparedStatement.setInt(1, id);
-            System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
@@ -160,7 +151,6 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
             preparedStatement.setString(1, "%" + keyword + "%");
             preparedStatement.setString(2, "%" + phone + "%");
             preparedStatement.setString(3, "%" + mail + "%");
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             Employee employee = null;
             while (rs.next()) {

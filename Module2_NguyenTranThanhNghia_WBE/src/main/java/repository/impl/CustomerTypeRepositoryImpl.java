@@ -20,7 +20,6 @@ public class CustomerTypeRepositoryImpl implements ICustomerTypeRepository {
         List<CustomerType> customerList = new ArrayList<>();
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMER_TYPES)) {
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             CustomerType customerType = null;
             while (rs.next()) {

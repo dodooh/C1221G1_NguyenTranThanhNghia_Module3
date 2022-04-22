@@ -73,8 +73,9 @@
 
                         <td style="white-space: nowrap;">
                             <a role="button" class="btn btn-warning"
-                               href="/${urlPath}?action=edit&id=${employee.getEmployeeId()}"><i
-                                    class="bi bi-tools"></i></a>
+                               href="/${urlPath}?action=edit&id=${employee.getEmployeeId()}">
+                                <img class="text-light" src="../../css/wrench.svg" alt="EDIT">
+                            </a>
                             |
                             <button type="button" class="btn btn-danger"
                                     data-toggle="modal" data-target="#exampleModalCenter"
@@ -85,7 +86,7 @@
                                         <c:out value='\"${employee.getEmployeeIdCard()}\"'/>
                                             )"
                             >
-                                <i class="bi bi-trash3"></i>
+                                <img class="text-light" src="../../css/trash3.svg" alt="DEL">
                             </button>
 
                         </td>

@@ -6,11 +6,9 @@
 
 <body class="text-light">
 <c:import url="../../components/header.jsp"/> <%--Header--%>
-<c:import url="../../components/navbar_entity.jsp">
-
-</c:import> <%--Navbar--%>
-<div class="container-fluid h-100 px-0 bg-dark"
-     style="margin-top: 144px; ">
+<c:import url="../../components/navbar_entity.jsp"/> <%--Navbar--%>
+<div class="container-fluid px-0 bg-dark"
+     style="margin-top: 144px; min-height: calc(100vh - 144px - 50px);">
     <div class="w-100 p-5">
         <a href="/${urlPath}" class="btn btn-light">Back to ${title} list</a>
         <div class="container px-1">
@@ -38,6 +36,8 @@
                     <div class="col-sm-5">
                         <input type="text" class="form-control" id="service_name"
                                name="service_name">
+                        <small class="text-danger">${errors.get("service_name")}</small>
+
                     </div>
                 </div>
                 <div class="form-group row">
@@ -82,6 +82,8 @@
                                 <option value="${rentType.rentTypeId}">${rentType.rentTypeName}</option>
                             </c:forEach>
                         </select>
+                        <small class="text-danger">${errors.get("rent_type_id")}</small>
+
                     </div>
                 </div>
                 <div class="form-group row">
@@ -100,62 +102,49 @@
                                 </c:if>
                             </c:forEach>
                         </select>
+                        <small class="text-danger">${errors.get("service_type_id")}</small>
+
                     </div>
                 </div>
-                <div id="villa_facility" style="display: block">
-                    <div class="form-group row">
-                        <label for="standard_room"
-                               class="col-sm-3 col-form-label text-right">Standard Room</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="standard_room"
-                                   name="standard_room">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="describe"
-                               class="col-sm-3 col-form-label text-right">Convenient
-                            Describe</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="describe"
-                                   name="describe">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="pool_area"
-                               class="col-sm-3 col-form-label text-right">Pool Area</label>
-                        <div class="col-sm-3">
-                            <input type="number" step="0.1" class="form-control" id="pool_area"
-                                   name="pool_area">
-                        </div>
+                <div class="form-group row">
+                    <label for="standard_room"
+                           class="col-sm-3 col-form-label text-right">Standard Room</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="standard_room"
+                               name="standard_room">
+                        <small class="text-danger">${errors.get("standard_room")}</small>
+
                     </div>
                 </div>
-                <div id="house_facility" style="display: none">
-                    <div class="form-group row">
-                        <label for="standard_roo2m"
-                               class="col-sm-3 col-form-label text-right">Standard Room</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="standard_roo2m"
-                                   name="standard_room">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="floors"
-                               class="col-sm-3 col-form-label text-right">Floors</label>
-                        <div class="col-sm-3">
-                            <input type="number" class="form-control" id="floors"
-                                   name="floors">
-                        </div>
+                <div class="form-group row">
+                    <label for="describe"
+                           class="col-sm-3 col-form-label text-right">Convenient
+                        Describe</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="describe"
+                               name="describe">
+                        <small class="text-danger">${errors.get("describe")}</small>
+
                     </div>
                 </div>
-                <div id="room_facility" style="display: none">
-                    <div class="form-group row">
-                        <label for="describe1"
-                               class="col-sm-3 col-form-label text-right">Convenient
-                            Describe</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="describe1"
-                                   name="describe">
-                        </div>
+                <div class="form-group row">
+                    <label for="pool_area"
+                           class="col-sm-3 col-form-label text-right">Pool Area</label>
+                    <div class="col-sm-3">
+                        <input type="number" step="0.1" class="form-control" id="pool_area"
+                               name="pool_area">
+                        <small class="text-danger">${errors.get("pool_area")}</small>
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="floors"
+                           class="col-sm-3 col-form-label text-right">Floors</label>
+                    <div class="col-sm-3">
+                        <input type="number" class="form-control" id="floors"
+                               name="floors">
+                        <small class="text-danger">${errors.get("floors")}</small>
+
                     </div>
                 </div>
 
@@ -170,53 +159,62 @@
                         </p>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
 
 <c:import url="../../components/footer.jsp"/> <%--Footer--%>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/WEB-INF/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/WEB-INF/js/jquery-3.6.0.min.js"></script>
+<%--<script type="text/javascript"--%>
+<%--        src="${pageContext.request.contextPath}/WEB-INF/js/bootstrap.bundle.min.js"></script>--%>
+<%--<script type="text/javascript"--%>
+<%--        src="${pageContext.request.contextPath}/WEB-INF/js/jquery-3.6.0.min.js"></script>--%>
 </body>
 <script>
+  $.fn.hasAttr = function(name) {
+    return this.attr(name) !== undefined;
+  };
+  $.fn.freezeInp = function() {
+    this.val('').attr('disabled','disabled').addClass('bg-secondary');
+  };
+  $.fn.openInp = function(inpObject) {
+    this.val('').removeAttr('disabled').removeClass('bg-secondary');
+  };
   $(document).ready(function () {
+
+    const standard_room_inp = $("input[name='standard_room']");
+    const describe_inp = $("input[name='describe']");
+    const pool_area_inp = $("input[name='pool_area']");
+    const floors_inp = $("input[name='floors']");
+
+    (function() {
+      standard_room_inp.openInp();
+      describe_inp.openInp();
+      pool_area_inp.openInp();
+      floors_inp.freezeInp();
+    })()
+
     $('#service_type_id').change(function () {
       if (this.value == 1) {
-        $('#villa_facility').css({"display": "block"});
-        $('#house_facility').css({"display": "none"});
-        $('#room_facility').css({"display": "none"});
-        $('#house_facility').find("input").each(function () {
-          $(this).val('');
-        })
-        $('#room_facility').find("input").each(function() {
-          $(this).val('');
-        })
-
+        standard_room_inp.openInp();
+        describe_inp.openInp();
+        pool_area_inp.openInp();
+        floors_inp.freezeInp();
       } else if (this.value == 2) {
-        $('#villa_facility').css({"display": "none"});
-        $('#house_facility').css({"display": "block"});
-        $('#room_facility').css({"display": "none"});
-        $('#villa_facility').find("input").each(function() {
-          $(this).val('');
-        })
-        $('#room_facility').find("input").each(function() {
-          $(this).val('');
-        })
+        standard_room_inp.openInp();
+        describe_inp.freezeInp();
+        pool_area_inp.freezeInp();
+        floors_inp.openInp();
       } else {
-        $("#villa_facility").css({"display": "none"});
-        $('#house_facility').css({"display": "none"});
-        $('#room_facility').css({"display": "block"});
-        $('#villa_facility').find("input").each(function() {
-          $(this).val('');
-        })
-        $('#house_facility').find("input").each(function() {
-          $(this).val('');
-        })
+        standard_room_inp.freezeInp();
+        describe_inp.openInp();
+        pool_area_inp.freezeInp();
+        floors_inp.freezeInp();
       }
+      // console.log(standard_room_inp.hasAttr('disabled'));
+      // console.log(describe_inp.hasAttr('disabled'));
+      // console.log(pool_area_inp.hasAttr('disabled'));
+      // console.log(floors_inp.hasAttr('disabled'));
     })
   })
 </script>

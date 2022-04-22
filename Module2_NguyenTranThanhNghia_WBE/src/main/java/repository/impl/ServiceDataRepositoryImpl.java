@@ -20,7 +20,6 @@ public class ServiceDataRepositoryImpl implements IServiceDataRepository {
         List<ServiceData> serviceDataList = new ArrayList<>();
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_SERVICE_DATA_SQL);) {
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             ServiceData serviceData = null;
             while (rs.next()) {
@@ -48,7 +47,6 @@ public class ServiceDataRepositoryImpl implements IServiceDataRepository {
 
     @Override
     public void insertOne(ServiceData serviceData) {
-        System.out.println(serviceData);
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SERVICE_DATA_SQL);) {
 
@@ -59,13 +57,11 @@ public class ServiceDataRepositoryImpl implements IServiceDataRepository {
             preparedStatement.setInt(5, serviceData.getMaxPeopleAllowed());
             preparedStatement.setString(6, serviceData.getStandardRoom());
             preparedStatement.setString(7, serviceData.getConvenientDescribe());
-            preparedStatement.setDouble(8, serviceData.getPoolArea());
-            preparedStatement.setInt(9, serviceData.getNumFloors());
+            preparedStatement.setObject(8, serviceData.getPoolArea());
+            preparedStatement.setObject(9, serviceData.getNumFloors());
             preparedStatement.setInt(10, serviceData.getRentTypeId());
             preparedStatement.setInt(11, serviceData.getServiceTypeId());
-            System.out.println(preparedStatement);
             boolean result = preparedStatement.execute();
-            System.out.println(result);
         } catch (SQLException e) {
             e.printStackTrace();
         }

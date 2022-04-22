@@ -21,7 +21,6 @@ public class AccountRepositoryImpl implements IAccountRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(CHECK_LOGIN_SQL);) {
             preparedStatement.setString(1, user);
             preparedStatement.setString(2, pwd);
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 account = new Account(

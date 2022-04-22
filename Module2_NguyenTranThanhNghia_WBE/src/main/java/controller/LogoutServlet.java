@@ -16,6 +16,14 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("try log out");
         req.getSession().removeAttribute("name_session");
+        Cookie[] cookies = req.getCookies();
+        if (cookies != null)
+            for (Cookie cookie : cookies) {
+                cookie.setValue("");
+                cookie.setPath("/");
+                cookie.setMaxAge(0);
+                resp.addCookie(cookie);
+            }
         resp.sendRedirect("/login");
     }
 }

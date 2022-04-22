@@ -19,7 +19,6 @@ public class PositionRepositoryImpl implements IPositionRepository {
         List<Position> positionList = new ArrayList<>();
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_POSITION)) {
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             Position position = null;
             while (rs.next()) {

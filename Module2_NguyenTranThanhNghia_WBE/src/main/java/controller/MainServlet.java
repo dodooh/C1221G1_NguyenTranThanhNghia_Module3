@@ -12,6 +12,7 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = String.valueOf(request.getRequestURL());
         request.setAttribute("urlPath", "home");
+        request.setAttribute("title", "Furama Resort");
         request.getRequestDispatcher("/view/home.jsp").forward(request, response);
     }
 

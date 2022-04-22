@@ -19,7 +19,6 @@ public class DepartmentRepositoryImpl implements IDepartmentRepository {
         List<Department> departmentList = new ArrayList<>();
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_DEPARTMENTS)) {
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             Department department = null;
             while (rs.next()) {

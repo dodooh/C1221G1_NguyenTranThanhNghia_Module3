@@ -18,7 +18,6 @@ public class RentTypeRepositoryImpl implements IRentTypeRepository {
         List<RentType> rentTypeList = new ArrayList<>();
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_RENT_TYPE)) {
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             RentType rentType = null;
             while (rs.next()) {

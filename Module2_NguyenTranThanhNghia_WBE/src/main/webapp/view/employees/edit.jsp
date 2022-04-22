@@ -65,8 +65,8 @@
                     <label for="salary"
                            class="col-sm-3 col-form-label text-right">Salary</label>
                     <div class="col-sm-9">
-                        <fmt:parseNumber var="salary" value="${employee.getEmployeeSalary()}"
-                                          type="number"/>
+                        <fmt:formatNumber var="salary" value="${employee.getEmployeeSalary()}"
+                                         type="number" pattern="0"/>
                         <input type="number" step="0.01" class="form-control" id="salary"
                                name="salary" value="${salary}">
                     </div>
@@ -105,7 +105,8 @@
                             <c:forEach items="${positions}" var="position">
                                 <c:choose>
                                     <c:when test="${position.positionId eq employee.employeePositionId}">
-                                        <option value="${position.positionId}" selected>${position.positionName}</option>
+                                        <option value="${position.positionId}"
+                                                selected>${position.positionName}</option>
                                     </c:when>
                                     <c:otherwise>
                                         <option value="${position.positionId}">${position.positionName}</option>
@@ -125,7 +126,8 @@
                             <c:forEach items="${educationDegrees}" var="educationDegree">
                                 <c:choose>
                                     <c:when test="${educationDegree.educationDegreeId eq employee.employeeEducationDegreeId}">
-                                        <option value="${educationDegree.educationDegreeId}" selected>${educationDegree.educationDegreeName}</option>
+                                        <option value="${educationDegree.educationDegreeId}"
+                                                selected>${educationDegree.educationDegreeName}</option>
                                     </c:when>
                                     <c:otherwise>
                                         <option value="${educationDegree.educationDegreeId}">${educationDegree.educationDegreeName}</option>
@@ -145,7 +147,8 @@
                             <c:forEach items="${departments}" var="department">
                                 <c:choose>
                                     <c:when test="${department.departmentId eq employee.employeeDivisionId}">
-                                        <option value="${department.departmentId}" selected>${department.departmentName}</option>
+                                        <option value="${department.departmentId}"
+                                                selected>${department.departmentName}</option>
                                     </c:when>
                                     <c:otherwise>
                                         <option value="${department.departmentId}">${department.departmentName}</option>

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -151,7 +152,7 @@ public class EmployeeServlet extends HttpServlet {
         Employee employee = new Employee(null, employeeName, employeeDob, employeeIdCard, employeeSalary,
             employeePhone, employeeMail, employeeAddress, employeePositionId, employeeEducationDegreeId, employeeDivisionId);
 
-        iEmployeeService.insertOne(employee);
+        Map<String, String> error =  iEmployeeService.insertOne(employee);
         try {
             request.setAttribute("message", "Success");
             request.setAttribute("positions", iPositionService.selectAllPosition());

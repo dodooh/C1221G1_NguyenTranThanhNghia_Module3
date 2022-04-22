@@ -19,7 +19,6 @@ public class EducationDegreeRepositoryImpl implements IEducationDegreeRepository
         List<EducationDegree> educationDegrees = new ArrayList<>();
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_EDUCATION_DEGREE)) {
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             EducationDegree educationDegree = null;
             while (rs.next()) {
