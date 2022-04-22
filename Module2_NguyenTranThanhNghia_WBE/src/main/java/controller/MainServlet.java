@@ -10,9 +10,7 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("GET home");
         String url = String.valueOf(request.getRequestURL());
-        System.out.println(url.substring(url.lastIndexOf("/") + 1));
         request.setAttribute("urlPath", "home");
         request.getRequestDispatcher("/view/home.jsp").forward(request, response);
     }

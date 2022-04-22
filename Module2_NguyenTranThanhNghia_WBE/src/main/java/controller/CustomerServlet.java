@@ -83,7 +83,6 @@ public class CustomerServlet extends HttpServlet {
         String customerName = request.getParameter("customer_name");
         String customerCode = request.getParameter("customer_code");
         String customerDob = request.getParameter("date_of_birth");
-        System.out.println(customerDob);
         Integer customerGender = 0;
         try {
             customerGender = Integer.parseInt(request.getParameter("gender"));

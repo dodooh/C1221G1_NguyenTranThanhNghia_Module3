@@ -13,28 +13,27 @@ import service.impl.AccountServiceImpl;
 
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
+    IAccountService iAccountService = new AccountServiceImpl();
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        checkLogin(request, response);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String remember = request.getParameter("remember");
+        checkLogin(request, response, username, password, remember);
     }
 
-    private void checkLogin(HttpServletRequest request, HttpServletResponse response) {
+    private void checkLogin(HttpServletRequest request, HttpServletResponse response, String username, String password, String remember) {
         try {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            String remember = request.getParameter("remember");
+
             boolean isValidUsn = username != null & username.trim().length() > 0;
             boolean isValidPwd = password != null & password.trim().length() > 0;
-            System.out.println(remember);
             if (isValidPwd && isValidUsn) {
-                IAccountService iAccountService = new AccountServiceImpl();
                 Account account = iAccountService.checkAccount(username, password);
                 if (account != null) { // account xac nhan thanh cong
                     // Tao 1 session attribute name_session
-
                     request.getSession().setAttribute("name_session",account.getName());
-                    System.out.println("session");
                     if (remember != null) {
                         Cookie usn_ck = new Cookie("usn_ck",username);
                         Cookie pwd_ck = new Cookie("pwd_ck",password);
@@ -42,9 +41,7 @@ public class LoginServlet extends HttpServlet {
                         response.addCookie(usn_ck);
                         response.addCookie(pwd_ck);
                         response.addCookie(rmb_ck);
-                        System.out.println("cookie");
                     }
-                    System.out.println("session");
                     response.sendRedirect("home");
                 } else {
                     request.setAttribute("message", "DATA INCORRECT");
@@ -60,22 +57,29 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String username = null;
-//        String password = null;
-//        Cookie[] cookies = request.getCookies();
-//        for (Cookie cookie : cookies) {
-//            if (cookie.getName().equals("usn_ck")) {
-//                username = cookie.getValue();
-//            }
-//            if (cookie.getName().equals("pwd_ck")) {
-//                username = cookie.getValue();
-//            }
-//        }
-//        if (username != null && password != null) {
-//            do
-//        }
-        request.getRequestDispatcher("/view/login.jsp").forward(request,response);
+        String username = null;
+        String password = null;
+        String remember = null;
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            System.out.println(cookie.getName());
+            if (cookie.getName().equals("usn_ck")) {
+                username = cookie.getValue();
+            }
+            if (cookie.getName().equals("pwd_ck")) {
+                password = cookie.getValue();
+            }
+            if (cookie.getName().equals("rmb_ck")) {
+                remember = cookie.getValue();
+            }
+        }
+        if (username != null && password != null) {
+            checkLogin(request, response, username, password, remember);
+        } else {
+            request.getRequestDispatcher("/view/login.jsp").forward(request,response);
+        }
     }
 }

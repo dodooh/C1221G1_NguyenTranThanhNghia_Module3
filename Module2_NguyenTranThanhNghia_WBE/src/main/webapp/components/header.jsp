@@ -8,7 +8,10 @@
             <h5 class="logo me-auto"><a href="/login" class="nav-link">Log In</a></h5>
         </c:when>
         <c:otherwise>
-            <h5 class="logo me-auto"><a href="/login" class="nav-link">${sessionScope['name_session']}</a></h5>
+            <div class="me-auto row">
+                <h5 class="logo"><a href="/home" class="nav-link">${sessionScope['name_session']}</a></h5>
+                <p><a href="/logout" class="nav-link">(log out)</a></p>
+            </div>
         </c:otherwise>
         </c:choose>
     </div>
