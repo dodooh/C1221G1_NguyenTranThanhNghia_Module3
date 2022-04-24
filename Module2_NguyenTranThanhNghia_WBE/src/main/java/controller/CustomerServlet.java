@@ -32,6 +32,7 @@ public class CustomerServlet extends HttpServlet {
         if (action == null) {
             action = "";
         }
+        System.out.println(action);
         switch (action) {
             case "create":
                 createCustomer(request, response);
@@ -103,7 +104,12 @@ public class CustomerServlet extends HttpServlet {
             customerAddress, customerTypeId);
         Map<String, String> errors = iCustomerService.updateOne(customer);
         if (errors.isEmpty()) {
-            request.setAttribute("message", "Success");
+            try {
+                response.sendRedirect("customers");
+                return;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             request.setAttribute("errors", errors);
         }

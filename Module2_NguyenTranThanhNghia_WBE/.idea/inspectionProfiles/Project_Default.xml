@@ -9,7 +9,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="12">
+          <list size="13">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -22,6 +22,7 @@
             <item index="9" class="java.lang.String" itemvalue="--black-olive" />
             <item index="10" class="java.lang.String" itemvalue="--rich-black-fogra-39" />
             <item index="11" class="java.lang.String" itemvalue="--eerie-black" />
+            <item index="12" class="java.lang.String" itemvalue="tr" />
           </list>
         </value>
       </option>

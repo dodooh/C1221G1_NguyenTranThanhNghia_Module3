@@ -16,7 +16,10 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
     private static final String INSERT_EMPLOYEE_SQL = "INSERT INTO furama_resort.staff (staff_name, date_of_birth, identify_number, salary, phone_number, email, address, position_id, education_degree_id, department_id) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String UPDATE_EMPLOYEE_SQL = "update furama_resort.staff set staff_name = ?, date_of_birth = ?, identify_number = ?, salary = ?, phone_number = ?, email = ?, address = ?, position_id = ?, education_degree_id = ?, department_id = ? where staff_id = ?";
     private static final String DELETE_EMPLOYEE_SQL = "delete from furama_resort.staff where staff_id = ?";
-    private static final String SEARCH_EMPLOYEE_SQL = "select staff_id, staff_name, date_of_birth, identify_number, salary, phone_number, email, address, position_id, education_degree_id, department_id from staff where staff_name LIKE ? and date_of_birth between ? and ?";
+    private static final String SEARCH_EMPLOYEE_FULL_SQL = "select staff_id, staff_name, date_of_birth, identify_number, salary, phone_number, email, address, position_id, education_degree_id, department_id from staff where staff_name LIKE ? and date_of_birth between ? and ?";
+    private static final String SEARCH_EMPLOYEE_START_SQL = "select staff_id, staff_name, date_of_birth, identify_number, salary, phone_number, email, address, position_id, education_degree_id, department_id from staff where staff_name LIKE ? and date_of_birth > ?";
+    private static final String SEARCH_EMPLOYEE_END_SQL = "select staff_id, staff_name, date_of_birth, identify_number, salary, phone_number, email, address, position_id, education_degree_id, department_id from staff where staff_name LIKE ? and date_of_birth < ?";
+    private static final String SEARCH_EMPLOYEE_NO_SQL = "select staff_id, staff_name, date_of_birth, identify_number, salary, phone_number, email, address, position_id, education_degree_id, department_id from staff where staff_name LIKE ?";
     private BaseRepository baseRepository = BaseRepository.getInstance();
 
     @Override
@@ -146,11 +149,20 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
     @Override
     public List<Employee> search(String keyword, String startDate, String endDate) {
         List<Employee> employeeList = new ArrayList<>();
+        String SQL = null;
+        if ("".equals(startDate) && "".equals(endDate)) {
+            SQL = SEARCH_EMPLOYEE_NO_SQL ;
+        } else if ("".equals(startDate)) {
+            SQL = SEARCH_EMPLOYEE_NO_SQL + " and date_of_birth < '" + endDate + "'";
+        } else if ("".equals(endDate)) {
+            SQL = SEARCH_EMPLOYEE_NO_SQL + " and date_of_birth > '" + startDate+ "'";
+        } else {
+            SQL = SEARCH_EMPLOYEE_NO_SQL + " and date_of_birth between '" + startDate + "' and '" + endDate+ "'";
+        }
+
         try (Connection connection = baseRepository.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_EMPLOYEE_SQL);) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);) {
             preparedStatement.setString(1, "%" + keyword + "%");
-            preparedStatement.setString(2, startDate);
-            preparedStatement.setString(3, endDate);
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             Employee employee = null;
