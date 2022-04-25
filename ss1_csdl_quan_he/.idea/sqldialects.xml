@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/../case_study/Task1.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/../ss2_thiet_ke_va_tao_csdl/bai_tap/quan_ly_ban_hang/QuanLyBanHang.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/../ss2_thiet_ke_va_tao_csdl/bai_tap/thiet_ke_erd/NhaCungCap.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/../ss3_thao_tac_voi_csdl/bai_tap/thao_tac_voi_csdl_quan_ly_ban_hang/ThaoTacVoiQuanLyBanHang.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/../ss3_thao_tac_voi_csdl/bai_tap/truy_van_du_lieu_quan_ly_sinh_vien/TruyVanDuLieuQLSV.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/../ss3_thao_tac_voi_csdl/thuc_hanh/them_du_lieu_vao_csdl_qlsv/ThemDuLieuQuanLySinhVien.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/../ss3_thao_tac_voi_csdl/thuc_hanh/truy_van_csdl_qlsv/TruyVanQuanLySinhVien.sql" dialect="MySQL" />
+    <file url="PROJECT" dialect="MySQL" />
+  </component>
+</project>

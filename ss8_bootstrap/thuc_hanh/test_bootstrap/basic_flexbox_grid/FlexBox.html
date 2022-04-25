@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Bootstrap CDN -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+            crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icons CDN -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <title>Flex</title>
+</head>
+<style></style>
+<body>
+<header>
+    <h1 class="text-center display-1">
+        <strong>Bootstrap Flex</strong>
+    </h1>
+</header>
+
+<div class="container">
+    <!--todo: Flex  -->
+
+    <!--todo: Enable flex -->
+
+    <h2 class="display-4 mt-5"><small>1.</small> Enable flex</h2>
+
+    <div class="p-3 bg-light">
+        <!-- d-flex -->
+        <div class="d-flex p-2 bd-highlight bg-warning">I'm a flexbox container!</div>
+        <!-- d-inline-flex -->
+        <div class="p-2 d-inline-flex bd-highlight bg-info">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </div>
+    </div>
+
+    <!--todo: Direction -->
+
+    <h2 class="display-4 mt-5"><small>2.</small> Direction</h2>
+
+    <div class="p-3 bg-light">
+        <!-- d-flex & flex-row  -->
+        <div class="bg-info  d-flex flex-row mb-3">
+            <div class="p-2 bg-warning">Flex item 1</div>
+            <div class="p-2 bg-warning">Flex item 2</div>
+            <div class="p-2 bg-warning">Flex item 3</div>
+        </div>
+        <!-- d-flex & flex-row-reverse  -->
+        <div class="bg-warning d-flex flex-row-reverse mb-3">
+            <div class="p-2 bg-info">Flex item 1</div>
+            <div class="p-2 bg-info">Flex item 2</div>
+            <div class="p-2 bg-info">Flex item 3</div>
+        </div>
+        <!-- d-flex & .flex-column  -->
+        <div class="bg-danger d-flex flex-column text-white mb-3">
+            <div class="p-2 bg-secondary">Flex item 1</div>
+            <div class="p-2 bg-secondary">Flex item 2</div>
+            <div class="p-2 bg-secondary">Flex item 3</div>
+        </div>
+        <!-- d-flex & flex-column-reverse -->
+        <div class="bg-danger d-flex flex-column-reverse text-white mb-3">
+            <div class="p-2 bg-danger">Flex item 1</div>
+            <div class="p-2 bg-danger">Flex item 2</div>
+            <div class="p-2 bg-danger">Flex item 3</div>
+        </div>
+    </div>
+
+    <!--todo: Justify content -->
+
+    <h2 class="display-4 mt-5"><small>3.</small> Justify content</h2>
+
+    <div class="card p-3 bg-light">
+        <!-- justify-content-start -->
+        <div class="d-flex justify-content-start text-danger shadow p-2 mb-2">
+            justify-content-start
+        </div>
+        <!-- justify-content-end -->
+        <div class="d-flex justify-content-end text-info shadow p-2 mb-2">justify-content-end</div>
+        <!-- justify-content-center -->
+        <div class="d-flex justify-content-center text-warning shadow p-2 mb-2">
+            justify-content-center
+        </div>
+        <!--  justify-content-between -->
+        <div class="d-flex justify-content-between shadow p-2 mb-2">justify-content-between</div>
+        <!-- justify-content-around -->
+        <div class="d-flex justify-content-around shadow p-2 mb-2">justify-content-around</div>
+        <!-- justify-content-evenly -->
+        <div class="d-flex justify-content-evenly text-success shadow p-2 mb-2">
+            justify-content-evenly
+        </div>
+    </div>
+
+    <!--todo: Align items -->
+
+    <h2 class="display-4 mt-5"><small>4.</small> Align items</h2>
+
+    <div class="card p-3 bg-light">
+        <!-- align-items-start -->
+        <div class="d-flex align-items-start border p-2 mb-2" style="height: 100px">
+            <p class="text-danger shadow p-2 mb-2">align-items-start</p>
+            <p class="text-danger shadow p-2 mb-2">align-items-start</p>
+            <p class="text-danger shadow p-2 mb-2">align-items-start</p>
+        </div>
+        <!-- align-items-end -->
+        <div class="d-flex align-items-end border p-2 mb-2" style="height: 100px">
+            <p class="text-info shadow p-2 mb-2">align-items-end</p>
+            <p class="text-info shadow p-2 mb-2">align-items-end</p>
+            <p class="text-info shadow p-2 mb-2">align-items-end</p>
+        </div>
+        <!-- align-items-center -->
+        <div class="d-flex align-items-center border p-2 mb-2" style="height: 100px">
+            <p class="text-warning shadow p-2 mb-2">align-items-center</p>
+            <p class="text-warning shadow p-2 mb-2">align-items-center</p>
+            <p class="text-warning shadow p-2 mb-2">align-items-center</p>
+        </div>
+        <!--  align-items-baseline -->
+        <div class="d-flex align-items-baseline border p-2 mb-2" style="height: 100px">
+            <p class="text-success shadow p-2 mb-2">align-items-baseline</p>
+            <p class="text-success shadow p-2 mb-2">align-items-baseline</p>
+            <p class="text-success shadow p-2 mb-2">align-items-baseline</p>
+        </div>
+        <!-- align-items-stretch -->
+        <div class="d-flex align-items-stretch border p-2 mb-2" style="height: 100px">
+            <p class="shadow p-2 mb-2">align-items-stretch</p>
+            <p class="shadow p-2 mb-2">align-items-stretch</p>
+            <p class="shadow p-2 mb-2">align-items-stretch</p>
+        </div>
+    </div>
+
+    <!--todo: Align self -->
+
+    <h2 class="display-4 mt-5"><small>5.</small> Align self</h2>
+
+    <div class="card p-3 bg-light">
+        <div class="d-flex border p-2 mb-2" style="height: 100px">
+            <p class="text-danger shadow p-2 mb-2">align-self-start</p>
+            <!-- align-self-start -->
+            <p class="align-self-start text-danger shadow p-2 mb-2">
+                align-self-start
+            </p>
+            <p class="text-danger shadow p-2 mb-2">align-self-start</p>
+        </div>
+
+        <div class="d-flex border p-2 mb-2" style="height: 100px">
+            <p class="text-info shadow p-2 mb-2">align-self-end</p>
+            <!-- align-self-end -->
+            <p class="text-info align-self-end shadow p-2 mb-2">align-self-end</p>
+            <p class="text-info shadow p-2 mb-2">align-self-end</p>
+        </div>
+
+        <div class="d-flex border p-2 mb-2" style="height: 100px">
+            <p class="text-warning shadow p-2 mb-2">align-self-center</p>
+            <!-- align-self-center -->
+            <p class="text-warning align-self-center shadow p-2 mb-2">align-self-center</p>
+            <p class="text-warning shadow p-2 mb-2">align-self-center</p>
+        </div>
+
+        <div class="d-flex border p-2 mb-2" style="height: 100px">
+            <p class="text-success shadow p-2 mb-2">align-self-baseline</p>
+            <!--  align-self-baseline -->
+            <p class="text-success align-self-baseline shadow p-2 mb-2">align-self-baseline</p>
+            <p class="text-success shadow p-2 mb-2">align-self-baseline</p>
+        </div>
+
+        <div class="d-flex border p-2 mb-2" style="height: 100px">
+            <p class="shadow p-2 mb-2">align-self-stretch</p>
+            <!-- align-self-stretch -->
+            <p class="shadow align-self-stretch p-2 mb-2">align-self-stretch</p>
+            <p class="shadow p-2 mb-2">align-self-stretch</p>
+        </div>
+    </div>
+
+    <!--todo: Fill -->
+
+    <h2 class="display-4 mt-5"><small>6.</small> Fill</h2>
+
+    <div class="card p-3 bg-light">
+        <div class="d-flex bg-white">
+            <!-- flex-fill -->
+            <div class="p-2 flex-fill shadow bd-highlight">
+                Flex item with a lot of content
+            </div>
+            <div class="p-2 shadow bd-highlight">Flex item</div>
+            <div class="p-2 flex-fill shadow bd-highlight">Flex item</div>
+        </div>
+    </div>
+
+    <!--todo: Grow and shrink -->
+
+    <h2 class="display-4 mt-5"><small>7.</small> Grow and shrink</h2>
+
+    <div class="card p-3 bg-light">
+        <div class="d-flex bd-highlight">
+            <!-- flex-grow-1 -->
+            <div class="flex-grow-1 p-2 shadow bd-highlight">Flex item</div>
+            <div class="flex-grow-1 bd-highlight shadow p-2">Flex item</div>
+            <div class="bd-highlight shadow p-2">Third flex item</div>
+        </div>
+    </div>
+
+    <!--todo: Wrap -->
+
+    <h2 class="display-4 mt-5"><small>8.</small> Wrap</h2>
+
+    <div class="card p-3 bg-light">
+        <!-- flex-wrap -->
+        <div class="d-flex flex-wrap bd-highlight">
+            <div class="bg-info shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-info shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-info shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-info shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-info shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-info shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-info shadow p-2">Flex item flex-wrap</div>
+        </div>
+        <!-- flex-nowrap -->
+        <div class="d-flex flex-nowrap bd-highlight">
+            <div class="bg-warning shadow p-2">Flex item flex-nowrap</div>
+            <div class="bg-warning shadow p-2">Flex item flex-nowrap</div>
+            <div class="bg-warning shadow p-2">Flex item flex-nowrap</div>
+            <div class="bg-warning shadow p-2">Flex item flex-nowrap</div>
+            <div class="bg-warning shadow p-2">Flex item flex-nowrap</div>
+            <div class="bg-warning shadow p-2">Flex item flex-nowrap</div>
+            <div class="bg-warning shadow p-2">Flex item flex-nowrap</div>
+        </div>
+        <!-- flex-wrap-reverse -->
+        <div class="d-flex flex-wrap-reverse bd-highlight">
+            <div class="bg-white shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-white shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-white shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-white shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-white shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-white shadow p-2">Flex item flex-wrap</div>
+            <div class="bg-white shadow p-2">Flex item flex-wrap</div>
+        </div>
+    </div>
+    <!--? Container End -->
+</div>
+
+<!-- FOOTER -->
+
+<footer class="mt-5 p-4 bg-dark text-center fs-1">
+    <h6 class="text-white">Copyright &copy; 2021 </h6>
+</footer>
+</body>
+</html>

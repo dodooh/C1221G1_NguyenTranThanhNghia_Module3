@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    font-family: "Times New Roman", sans-serif;
+    color: #525252;
+    position: relative;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 22px;
+    text-transform: none;
+}
+h1 {
+    font-weight: 400;
+    font-style: oblique;
+    font-size: 42px;
+    letter-spacing: .01em;
+    line-height: 1.2em;
+    text-transform: none;
+    color: #222;
+}
+h3 {
+    white-space: pre-wrap;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+    letter-spacing: .15em;
+    line-height: 1.4em;
+    text-transform: uppercase;
+}
+h4 {
+    color: #525252;
+    white-space: pre-wrap;
+    font-weight: 400;
+    margin-top: 30px;
+    font-style: normal;
+    font-size: 30px;
+    letter-spacing: .15em;
+    line-height: 1.4em;
+    text-transform: uppercase;
+    text-align: left;
+}
+li > h5 {
+    white-space: pre-wrap;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 24px;
+    letter-spacing: .15em;
+    line-height: 1.4em;
+    text-transform: uppercase;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+#header-id {
+    padding: 20px 20px;
+    text-align: center;
+    margin: auto 0;
+}
+hr {
+    background-color: orange;
+    margin: 0;
+}
+ul {
+    padding-left: 0;
+}
+li {
+    list-style: none;
+}
+p {
+    text-align: justify;
+    line-height: 1.5em;
+}
+html {
+    scroll-behavior: smooth;
+}
+a {
+    text-decoration: none;
+    color: #e63946;
+    cursor: pointer;
+}
+a:visited {
+    color: #e63946;
+}
+#side_bar {
+    float: left;
+    text-align: center;
+    padding: 20px 2%;
+    width: 20%;
+    margin: 0;
+    position: sticky;
+}
+.chapter {
+    display: none;
+}
+.chapter:first-of-type {
+    display: block;
+}
+#main_content {
+    float: left;
+    width: 70%;
+    padding: 20px 35px;
+    margin: 0;
+}
+.book-img {
+    width: 30%;
+}
+#scroll {
+    clear: right;
+    height: 65px;
+    width: 50px;
+    position: sticky;
+    --offset: 500px;
+    margin-top: calc(100vh + var(--offset));
+    place-self: start;
+    bottom: 20px;
+    left: 5%;
+    text-decoration: none;
+    z-index: 1;
+}
+
+#muc_luc {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

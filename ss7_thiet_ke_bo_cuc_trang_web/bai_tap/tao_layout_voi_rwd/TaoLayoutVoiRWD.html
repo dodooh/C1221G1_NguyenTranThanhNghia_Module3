@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+<header>
+    <div class="toggle-btn" onclick="myFunction()">
+        <span></span><span></span><span></span>
+    </div>
+    <div class="logo">
+        <h1>LOGO</h1>
+    </div>
+    <nav id="nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </nav>
+</header>
+<div id="body">
+    <div class="left-side-panel">
+        <ul>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>Welcome</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea
+            commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.</p>
+        <hr>
+        <h1>Test</h1>
+        <p>Lorem ipsum.</p>
+    </div>
+    <div class="right-side-panel">
+        <div class="ads-banner">ADS</div>
+        <div class="ads-banner">ADS</div>
+    </div>
+</div>
+<div id="footer">Footer Test</div>
+<script>
+    function myFunction() {
+        var x = document.getElementById("nav");
+        x.classList.toggle('show')
+    }
+</script>
+</body>
+</html>
