@@ -13,41 +13,43 @@ import repository.IContractRepository;
 public class ContractRepositoryImpl implements IContractRepository {
 
     private final BaseRepository baseRepository = BaseRepository.getInstance();
-    private static final String SELECT_ALL_SERVICE_DATA_SQL =
+    private static final String SELECT_ALL_SERVICE_DATA_DTO_SQL =
         "select contract_id, created_date, end_date, deposit, staff_name, customer_name, service_name "
             + "from contract left join staff s on s.staff_id = contract.staff_id "
             + "left join customer c on c.customer_id = contract.customer_id "
             + "left join service s2 on contract.service_id = s2.service_id";
     private static final String INSERT_SERVICE_SQL = "INSERT INTO contract (created_date, end_date, deposit, staff_id, customer_id, service_id) values (?,?,?,?,?,?);";
+    private static final String SELECT_ALL_SERVICE_DATA_SQL = "select contract_id, created_date, end_date, deposit, staff_id, customer_id, service_id from contract;";
 
-    //    @Override
-//    public List<Contract> selectAll() {
-//        List<Contract> contractList = new ArrayList<>();
-//        try (Connection connection = baseRepository.getConnection();
-//            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_SERVICE_DATA_SQL);) {
-//            ResultSet rs = preparedStatement.executeQuery();
-//            Contract contract = null;
-//            while (rs.next()) {
-//                contract = new Contract();
-//                contract.setContractId(rs.getInt("contract_id"));
-//                contract.setCreateDate(rs.getString("created_date"));
-//                contract.setEndDate(rs.getString("end_date"));
-//                contract.setDeposit(rs.getDouble("deposit"));
-//                contract.setEmployeeId(rs.getInt("staff_id"));
-//                contract.setCustomerId(rs.getInt("customer_id"));
-//                contract.setServiceId(rs.getInt("service_id"));
-//                contractList.add(contract);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return contractList;
-//    }
     @Override
-    public List<ContractDTO> selectAll() {
-        List<ContractDTO> contractList = new ArrayList<>();
+    public List<Contract> selectAllContract() {
+        List<Contract> contractList = new ArrayList<>();
         try (Connection connection = baseRepository.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_SERVICE_DATA_SQL);) {
+            ResultSet rs = preparedStatement.executeQuery();
+            Contract contract = null;
+            while (rs.next()) {
+                contract = new Contract();
+                contract.setContractId(rs.getInt("contract_id"));
+                contract.setCreateDate(rs.getString("created_date"));
+                contract.setEndDate(rs.getString("end_date"));
+                contract.setDeposit(rs.getDouble("deposit"));
+                contract.setEmployeeId(rs.getInt("staff_id"));
+                contract.setCustomerId(rs.getInt("customer_id"));
+                contract.setServiceId(rs.getInt("service_id"));
+                contractList.add(contract);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return contractList;
+    }
+
+    @Override
+    public List<ContractDTO> selectAllContractDTO() {
+        List<ContractDTO> contractList = new ArrayList<>();
+        try (Connection connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_SERVICE_DATA_DTO_SQL);) {
             ResultSet rs = preparedStatement.executeQuery();
             ContractDTO contract = null;
             while (rs.next()) {

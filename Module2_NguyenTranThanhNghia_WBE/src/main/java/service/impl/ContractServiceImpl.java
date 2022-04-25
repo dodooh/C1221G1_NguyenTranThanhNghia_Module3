@@ -17,6 +17,11 @@ public class ContractServiceImpl implements IContractService {
 
     @Override
     public List<ContractDTO> selectAllContractDTO() {
-        return iContractRepository.selectAll();
+        return iContractRepository.selectAllContractDTO();
+    }
+
+    @Override
+    public List<Contract> selectAllContract() {
+        return iContractRepository.selectAllContract();
     }
 }

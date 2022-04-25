@@ -125,7 +125,7 @@ public class ContractServlet extends HttpServlet {
         System.out.println(contract);
         iContractService.insertOne(contract);
         try {
-            response.sendRedirect("/contracts");
+            response.sendRedirect(URL_PATH);
         } catch (IOException e) {
             e.printStackTrace();
         }

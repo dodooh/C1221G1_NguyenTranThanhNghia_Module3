@@ -28,11 +28,18 @@
                     Service
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link h5 mr-3" href="/contracts" style="${urlPath eq 'contracts' ? 'color: #d1342f !important;' : ''} "
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle h5 mr-3" id="navbarDropdown"
+                   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false"
+                   style="${urlPath eq 'contracts' ? 'color: #d1342f !important;' : ''} "
                 >
                     Contract
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/contracts">Contract</a>
+                    <a class="dropdown-item" href="/contract-details">Contract Details</a>
+                </div>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="/${urlPath}" method="get">

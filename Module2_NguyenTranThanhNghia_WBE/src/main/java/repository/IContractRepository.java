@@ -6,7 +6,9 @@ import model.Contract;
 
 public interface IContractRepository {
 
-    List<ContractDTO> selectAll();
+    List<ContractDTO> selectAllContractDTO();
 
     void insertOne(Contract contract);
+
+    List<Contract> selectAllContract();
 }

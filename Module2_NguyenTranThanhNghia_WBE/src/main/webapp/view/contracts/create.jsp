@@ -6,7 +6,7 @@
 
 <body class="text-light">
 <c:import url="../../components/header.jsp"/> <%--Header--%>
-<c:import url="../../components/navbar_entity.jsp"/> <%--Navbar--%>
+<c:import url="../../components/navbar.jsp"/> <%--Navbar--%>
 <div class="container-fluid px-0 bg-dark"
      style="margin-top: 144px; min-height: calc(100vh - 144px - 50px);">
     <div class="w-100 p-5">

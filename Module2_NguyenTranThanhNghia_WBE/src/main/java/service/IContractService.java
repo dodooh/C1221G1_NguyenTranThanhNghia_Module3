@@ -9,4 +9,5 @@ public interface IContractService {
     void insertOne(Contract contract);
 
     List<ContractDTO> selectAllContractDTO();
+    List<Contract> selectAllContract();
 }
