@@ -79,82 +79,6 @@
         </tbody>
     </table>
 </div>
-<%--// MODAL CREATE--%>
-<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog"
-     aria-labelledby="modalCreateCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalCreateLongTitle">Create New Product</h5>
-                <button type="button" class="close text-light" data-dismiss="modal"
-                        aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form id="create-form" action="/products?action=create" method="post" onsubmit="return validateForm()">
-                <div class="modal-body">
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-3 control-label text-right">Name</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="name" id="name"
-                                   placeholder="Please enter product name">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="price" class="col-sm-3 control-label text-right">Price</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="price" id="price"
-                                   placeholder="Enter price">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="quantity"
-                               class="col-sm-3 control-label text-right">Quantity</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="quantity"
-                                   id="quantity"
-                                   placeholder="Enter quantity">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="color"
-                               class="col-sm-3 control-label text-right">Color</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="color"
-                                   id="color"
-                                   placeholder="Please enter color">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="category"
-                               class="col-sm-3 control-label text-right">Category</label>
-                        <div class="col-sm-9">
-                            <select id="category" name="category" class="form-select"
-                                    aria-label="Default select example">
-                                <option>Choose Category</option>
-                                <c:forEach items="${categories}" var="category">
-                                    <c:choose>
-                                        <c:when test="${category.categoryId eq customer.categoryId}">
-                                            <option value="${category.categoryId}"
-                                                    selected>${category.categoryName}</option>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <option value="${category.categoryId}">${category.categoryName}</option>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:forEach>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-                    <button type="submit" class="btn btn-success">Create</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 <%--// MODAL DELETE--%>
 <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -181,7 +105,18 @@
         </div>
     </div>
 </div>
-</body>
+
+<script src="../../datatables/js/jquery.dataTables.min.js"></script>
+<script src="../../datatables/js/dataTables.bootstrap4.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#product').dataTable({
+      "dom": 'lrtip',
+      "lengthChange": false,
+      "pageLength": 10
+    })
+  })
+</script>
 <script>
   function infoDelete(id, name) {
     document.getElementById("id_delete").value = id;
@@ -199,4 +134,5 @@
     });
   });
 </script>
+</body>
 </html>

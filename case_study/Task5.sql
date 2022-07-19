@@ -17,6 +17,6 @@ FROM contract c
          LEFT JOIN service_type st ON s.service_type_id = st.service_type_id
          LEFT JOIN accompanied_service `as` ON cd.accompanied_service_id = `as`.accompanied_service_id
 GROUP BY c.contract_id, c2.customer_id
-ORDER BY cid, c.contract_id DESC;
+HAVING
 ;
 
